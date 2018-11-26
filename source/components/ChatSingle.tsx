@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 
-class SingleChat extends React.Component{
+class ChatSingle extends React.Component{
 
     render (){
         return(
@@ -13,4 +13,4 @@ class SingleChat extends React.Component{
 }
 
 
-export default SingleChat
+export default ChatSingle

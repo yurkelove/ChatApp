@@ -12,15 +12,15 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from 'react';
-var SingleChat = /** @class */ (function (_super) {
-    __extends(SingleChat, _super);
-    function SingleChat() {
+var ChatSingle = /** @class */ (function (_super) {
+    __extends(ChatSingle, _super);
+    function ChatSingle() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    SingleChat.prototype.render = function () {
+    ChatSingle.prototype.render = function () {
         return (React.createElement("div", null,
             React.createElement("h1", null, "Single Chat Page")));
     };
-    return SingleChat;
+    return ChatSingle;
 }(React.Component));
-export default SingleChat;
+export default ChatSingle;

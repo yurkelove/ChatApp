@@ -12,10 +12,10 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from 'react';
-import ChatList from './listChats';
-import SingleChat from './singleChat';
-import Registration from './registration';
-import { Route, BrowserRouter } from 'react-router-dom';
+import ChatList from './ChatsList';
+import ChatSingle from './ChatSingle';
+import Registration from './Registration';
+import { Route, Redirect, BrowserRouter } from 'react-router-dom';
 var App = /** @class */ (function (_super) {
     __extends(App, _super);
     function App() {
@@ -24,9 +24,10 @@ var App = /** @class */ (function (_super) {
     App.prototype.render = function () {
         return (React.createElement(BrowserRouter, null,
             React.createElement("div", null,
-                React.createElement(Route, { path: "/registration", component: Registration }),
-                React.createElement(Route, { exact: true, path: "/singleChat", component: SingleChat }),
-                React.createElement(Route, { exact: true, path: "/listChats", component: ChatList }))));
+                React.createElement(Route, { path: "/Registration", component: Registration }),
+                React.createElement(Route, { exact: true, path: "/ChatSingle", component: ChatSingle }),
+                React.createElement(Route, { exact: true, path: "/ChatList", component: ChatList }),
+                React.createElement(Route, { exact: true, path: "/", render: function () { return (React.createElement(Redirect, { to: "/Registration" })); } }))));
     };
     return App;
 }(React.Component));
