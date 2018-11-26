@@ -1,10 +1,11 @@
 const path = require('path'); // Базовый модуль
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const devserver = require('./webpack/devserver');
 const sass = require('./webpack/sass');
 const extractCSS = require('./webpack/css.extract');
-const uglifyJS = require('./webpack/js.uglify');
+const uglifyJS = require('./webpack/uglify');
 
 const PATHS = { // Обьект
 	source : path.join(__dirname,'source'), // Исходники приложения
@@ -14,6 +15,7 @@ const PATHS = { // Обьект
 // И для Development и для Production
 const common = merge([
 	{
+		// точка входа
 		entry: PATHS.source + '/index.js', // точка входа
 		output: { // Имена файлов и деректории
 			path: PATHS.build,
