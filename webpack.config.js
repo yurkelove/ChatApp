@@ -30,7 +30,7 @@ const common = merge([
 		},
 		output: { // Имена файлов и деректории
 			path: PATHS.build,
-			filename: '[name].js' // Автоматически будут подставлятся имена файлов
+			filename: 'bundle.js' // Автоматически будут подставлятся имена файлов
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
@@ -38,6 +38,8 @@ const common = merge([
 			})
 		],
 	},
+	extractCSS(),
+	sass()
 ]);
 
 
@@ -46,7 +48,6 @@ module.exports = function (env) {
 	if(env === 'production'){
 		return merge([
 			common,
-			extractCSS(),
 			uglifyJS()
 		]);
 	}
@@ -54,8 +55,7 @@ module.exports = function (env) {
 		return Object.assign(
 			{},
 			common,
-			devserver(),
-			sass()
+			devserver()
 		)
 	}
 };
