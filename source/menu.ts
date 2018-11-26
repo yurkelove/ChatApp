@@ -1,8 +1,8 @@
-export default function (array,className) {
+export default function (array: any,className : any) {
 	var menu = document.createElement("ul");
 	menu.className = className;
 	var listItems = '';
-	array.forEach(function (item) {
+	array.forEach(function (item : any) {
 		listItems += '<li>' + item + '</li>';
 	});
 	menu.innerHTML = listItems;

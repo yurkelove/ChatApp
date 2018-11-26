@@ -1,5 +1,4 @@
 const path = require('path'); // Базовый модуль
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const devserver = require('./webpack/devserver');
@@ -16,7 +15,19 @@ const PATHS = { // Обьект
 const common = merge([
 	{
 		// точка входа
-		entry: PATHS.source + '/index.js', // точка входа
+		entry: PATHS.source + '/index.ts', // точка входа
+		module: {
+			rules: [
+				{
+					test: /\.tsx?$/,
+					use: 'ts-loader',
+					exclude: /node_modules/
+				}
+			]
+		},
+		resolve: {
+			extensions: [ '.tsx', '.ts', '.js' ]
+		},
 		output: { // Имена файлов и деректории
 			path: PATHS.build,
 			filename: '[name].js' // Автоматически будут подставлятся имена файлов
