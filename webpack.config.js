@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const devserver = require('./webpack/devserver');
 const sass = require('./webpack/sass');
+const extractCSS = require('./webpack/css.extract');
+const uglifyJS = require('./webpack/js.uglify');
 
 const PATHS = { // Обьект
 	source : path.join(__dirname,'source'), // Исходники приложения
@@ -29,7 +31,11 @@ const common = merge([
 
 module.exports = function (env) {
 	if(env === 'production'){
-		return common;
+		return merge([
+			common,
+			extractCSS(),
+			uglifyJS()
+		]);
 	}
 	if(env === 'development'){
 		return Object.assign(
