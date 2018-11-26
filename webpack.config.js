@@ -6,7 +6,8 @@ const PATHS = { // Обьект
 	build : path.join(__dirname,'build') // Результаты работы webpack
 };
 
-module.exports = {
+// И для Development и для Production
+const common = {
 	entry: PATHS.source + '/index.js', // точка входа
 	output: { // Имена файлов и деректории
 		path: PATHS.build,
@@ -17,8 +18,26 @@ module.exports = {
 			title: 'Chat App'
 		})
 	],
-	devServer: {
-		stats : 'errors-only'
-	}
-
 };
+
+
+
+const developmentConfig = {
+	devServer: {
+		stats : 'errors-only',
+		port: 9000
+	}
+};
+
+module.exports = function (env) {
+	if(env === 'production'){
+		return common;
+	}
+	if(env === 'development'){
+		return Object.assign(
+			{},
+			common,
+			developmentConfig
+		)
+	}
+}
