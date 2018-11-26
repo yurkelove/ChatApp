@@ -5,6 +5,7 @@ module.exports = function () {
 		devServer: {
 			contentBase: path.join(__dirname,'../source'),
 			stats : 'errors-only',
+			historyApiFallback: true,
 			port: 9000
 		}
 	}

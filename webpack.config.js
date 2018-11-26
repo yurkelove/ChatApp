@@ -15,7 +15,7 @@ const PATHS = { // Обьект
 const common = merge([
 	{
 		// точка входа
-		entry: PATHS.source + '/index.ts', // точка входа
+		entry: PATHS.source + '/index.tsx', // точка входа
 		module: {
 			rules: [
 				{
@@ -34,7 +34,7 @@ const common = merge([
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
-				title: 'Chat App'
+				template: PATHS.source + '/index.html'
 			})
 		],
 	},
