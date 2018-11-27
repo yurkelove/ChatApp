@@ -2,7 +2,6 @@ import * as React from 'react';
 
 
 class ChatSingle extends React.Component{
-
     render (){
         return(
             <div>

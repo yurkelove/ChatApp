@@ -6,27 +6,18 @@ import { Route, Redirect, BrowserRouter } from 'react-router-dom';
 
 
 class App extends React.Component{
-
-
-
-
     render (){
-
         return(
-
                 <BrowserRouter>
                     <div>
-                        <Route path="/Registration" component={Registration} />
-                        <Route exact path="/ChatSingle" component={ChatSingle}/>
-                        <Route exact path="/ChatList" component={ChatList}/>
+                        <Route path="/registration" component={Registration} />
+                        <Route exact path="/dialogs/:id" component={ChatSingle}/>
+                        <Route exact path="/dialogs" component={ChatList}/>
                         <Route exact path="/" render={() => (<Redirect to="/Registration" />)} />
                     </div>
                 </BrowserRouter>
-
         );
-
     }
-
 }
 
 
