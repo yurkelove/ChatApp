@@ -15,7 +15,8 @@ const PATHS = { // Обьект
 const common = merge([
 	{
 		// точка входа
-		entry: PATHS.source + '/index.tsx', // точка входа
+
+		entry: path.join(__dirname,'..','source', 'index.tsx'), // точка входа
 		module: {
 			rules: [
 				{
@@ -26,8 +27,6 @@ const common = merge([
 			]
 		},
 		resolve: {
-			// modules: [path.resolve(__dirname, '/src'), 'node_modules/'],
-			// descriptionFiles: ['package.json'],
 			extensions: [ '.tsx', '.ts', '.js' ]
 		},
 		output: { // Имена файлов и деректории
@@ -36,7 +35,7 @@ const common = merge([
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
-				template: PATHS.source + '/index.html'
+				template: path.join(__dirname,'..','source', 'index.html')
 			})
 		],
 	},
