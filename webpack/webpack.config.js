@@ -5,6 +5,7 @@ const devserver = require('./devserver');
 const sass = require('./sass');
 const extractCSS = require('./css.extract');
 const uglifyJS = require('./uglify');
+const TSLintPlugin = require('tslint-webpack-plugin');
 
 const PATHS = { // Обьект
 	source : path.join(__dirname,'..','source'), // Исходники приложения
@@ -23,7 +24,7 @@ const common = merge([
 					test: /\.tsx?$/,
 					use: 'ts-loader',
 					exclude: /node_modules/
-				}
+				},
 			]
 		},
 		resolve: {
@@ -36,11 +37,14 @@ const common = merge([
 		plugins: [
 			new HtmlWebpackPlugin({
 				template: path.join(PATHS.source, 'index.html')
+			}),
+			new TSLintPlugin({
+				files: ['../source/**/*.ts']
 			})
 		],
 	},
 	extractCSS(),
-	sass()
+	sass(),
 ]);
 
 

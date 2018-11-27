@@ -8,8 +8,8 @@ class ChatSingle extends React.Component{
                 <h1>Single Chat Page</h1>
             </div>
         );
-    }
-}
+    };
+};
 
 
-export default ChatSingle
+export default ChatSingle;
