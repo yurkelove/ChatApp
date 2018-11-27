@@ -16,7 +16,7 @@ const common = merge([
 	{
 		// точка входа
 
-		entry: path.join(__dirname,'..','source', 'index.tsx'), // точка входа
+		entry: path.join(PATHS.source, 'index.tsx'), // точка входа
 		module: {
 			rules: [
 				{
@@ -35,7 +35,7 @@ const common = merge([
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
-				template: path.join(__dirname,'..','source', 'index.html')
+				template: path.join(PATHS.source, 'index.html')
 			})
 		],
 	},
