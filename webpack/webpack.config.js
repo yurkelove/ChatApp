@@ -1,14 +1,14 @@
 const path = require('path'); // Базовый модуль
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
-const devserver = require('./webpack/devserver');
-const sass = require('./webpack/sass');
-const extractCSS = require('./webpack/css.extract');
-const uglifyJS = require('./webpack/uglify');
+const devserver = require('./devserver');
+const sass = require('./sass');
+const extractCSS = require('./css.extract');
+const uglifyJS = require('./uglify');
 
 const PATHS = { // Обьект
-	source : path.join(__dirname,'source'), // Исходники приложения
-	build : path.join(__dirname,'build') // Результаты работы webpack
+	source : path.join(__dirname,'..','source'), // Исходники приложения
+	build : path.join(__dirname,'..','build') // Результаты работы webpack
 };
 
 // И для Development и для Production
@@ -26,6 +26,8 @@ const common = merge([
 			]
 		},
 		resolve: {
+			// modules: [path.resolve(__dirname, '/src'), 'node_modules/'],
+			// descriptionFiles: ['package.json'],
 			extensions: [ '.tsx', '.ts', '.js' ]
 		},
 		output: { // Имена файлов и деректории
@@ -48,14 +50,19 @@ module.exports = function (env) {
 	if(env === 'production'){
 		return merge([
 			common,
-			uglifyJS()
+			uglifyJS(),
+			{
+				mode: 'production'
+			},
 		]);
 	}
 	if(env === 'development'){
-		return Object.assign(
-			{},
+		return merge([
 			common,
-			devserver()
-		)
+			devserver(),
+			{
+				mode: 'development'
+			},
+		]);
 	}
 };
