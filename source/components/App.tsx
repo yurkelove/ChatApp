@@ -5,6 +5,7 @@ import Registration from './Registration';
 import { Route, Redirect, BrowserRouter } from 'react-router-dom';
 
 
+
 class App extends React.Component{
     render (){
         return(
@@ -13,7 +14,7 @@ class App extends React.Component{
                         <Route path="/registration" component={Registration} />
                         <Route exact path="/dialogs/:id" component={ChatSingle}/>
                         <Route exact path="/dialogs" component={ChatList}/>
-                        <Route exact path="/" render={() => (<Redirect to="/Registration" />)} />
+                        <Route exact path="/" render={() => (<Redirect to="/registration" />)} />
                     </div>
                 </BrowserRouter>
         );
