@@ -1,15 +1,17 @@
 const path = require("path"); // Базовый модуль
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const merge = require("webpack-merge");
+const TSLintPlugin = require("tslint-webpack-plugin");
 const devserver = require("./devserver");
 const sass = require("./sass");
 const extractCSS = require("./css.extract");
 const uglifyJS = require("./uglify");
-const TSLintPlugin = require("tslint-webpack-plugin");
+
+
 
 const PATHS = { // Обьект
-	source : path.join(__dirname,"..","source"), // Исходники приложения
-	build : path.join(__dirname,"..","build") // Результаты работы webpack
+	source : path.join(__dirname,"..", "source"), // Исходники приложения
+	build : path.join(__dirname,"..", "build") // Результаты работы webpack
 };
 
 // И для Development и для Production
