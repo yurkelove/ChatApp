@@ -5,7 +5,6 @@ import Registration from './Registration';
 import { Route, Redirect, BrowserRouter } from 'react-router-dom';
 
 
-
 class App extends React.Component{
     render (){
         return(
@@ -18,7 +17,7 @@ class App extends React.Component{
                     </div>
                 </BrowserRouter>
         );
-    };
+    }
 }
 
 

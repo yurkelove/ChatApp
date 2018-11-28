@@ -1,6 +1,6 @@
 {
   "rules": {
-    "no-unused-variable": true,
+    "no-unused-variable": false,
     "curly": true,
     "no-console": [
       true,

@@ -29,7 +29,6 @@ var App = /** @class */ (function (_super) {
                 React.createElement(Route, { exact: true, path: "/dialogs", component: ChatList }),
                 React.createElement(Route, { exact: true, path: "/", render: function () { return (React.createElement(Redirect, { to: "/registration" })); } }))));
     };
-    ;
     return App;
 }(React.Component));
 export default App;

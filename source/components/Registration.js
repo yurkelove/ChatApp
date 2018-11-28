@@ -23,7 +23,6 @@ var Registration = /** @class */ (function (_super) {
             React.createElement("input", { type: 'text', placeholder: '\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448 \u043B\u043E\u0433\u0438\u043D' }),
             React.createElement("input", { type: 'text', placeholder: '\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448 \u043F\u0430\u0440\u043E\u043B\u044C' })));
     };
-    ;
     return Registration;
 }(React.Component));
 export default Registration;

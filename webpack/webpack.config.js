@@ -39,7 +39,7 @@ const common = merge([
 				template: path.join(PATHS.source, 'index.html')
 			}),
 			new TSLintPlugin({
-				files: ['../source/**/*.ts']
+				files: '../**/*.tsx'
 			})
 		],
 	},

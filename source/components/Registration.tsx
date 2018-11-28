@@ -10,7 +10,7 @@ class Registration extends React.Component{
                 <input type='text' placeholder='Введите ваш пароль' />
             </div>
         );
-    };
+    }
 }
 
 

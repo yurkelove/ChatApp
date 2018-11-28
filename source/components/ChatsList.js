@@ -21,7 +21,6 @@ var ChatsList = /** @class */ (function (_super) {
         return (React.createElement("div", null,
             React.createElement("h1", null, "Chats List Page")));
     };
-    ;
     return ChatsList;
 }(React.Component));
 export default ChatsList;

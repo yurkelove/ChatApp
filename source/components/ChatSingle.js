@@ -21,8 +21,6 @@ var ChatSingle = /** @class */ (function (_super) {
         return (React.createElement("div", null,
             React.createElement("h1", null, "Single Chat Page")));
     };
-    ;
     return ChatSingle;
 }(React.Component));
-;
 export default ChatSingle;
