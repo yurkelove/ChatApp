@@ -1,6 +1,8 @@
 {
+  "extends" : "tslint-config-airbnb",
   "rules": {
-    "no-unused-variable": false,
+    "no-unused-new": true,
+    "no-unused-variable": [true, "react"],
     "curly": true,
     "no-console": [
       true,
@@ -9,6 +11,10 @@
       "debug",
       "info"
     ],
+    "no-duplicate-imports": true,
+    "no-this-assignment": [true, { "allow-destructuring": true }],
+    "no-parameter-reassignment": true,
+    "prefer-template": true,
     "no-debugger": true,
     "no-duplicate-variable": true,
     "no-eval": true,
@@ -31,6 +37,9 @@
       "ban-keywords",
       "check-format",
       "allow-leading-underscore"
-    ]
+    ],
+    "ter-indent": [true, 2]
   }
+
+
 }
