@@ -1,9 +1,10 @@
 {
-  "extends" : "tslint-config-airbnb",
+  "extends": "tslint-config-airbnb",
   "rules": {
-    "no-unused-new": true,
-    "no-unused-variable": [true, "react"],
     "curly": true,
+    "trailing-comma": [true],
+    "no-string-throw": false,
+    "ordered-imports" : false,
     "no-console": [
       true,
       "log",
@@ -12,7 +13,7 @@
       "info"
     ],
     "no-duplicate-imports": true,
-    "no-this-assignment": [true, { "allow-destructuring": true }],
+    "no-this-assignment":true,
     "no-parameter-reassignment": true,
     "prefer-template": true,
     "no-debugger": true,

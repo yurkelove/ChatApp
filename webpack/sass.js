@@ -6,9 +6,9 @@ module.exports = function (paths) {
 					test: /\.scss$/,
 					include : paths,
 					use : [
-						'style-loader',
-						'css-loader',
-						'sass-loader'
+						"style-loader",
+						"css-loader",
+						"sass-loader"
 					]
 				}
 			]

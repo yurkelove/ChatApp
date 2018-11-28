@@ -1,11 +1,11 @@
 import * as React from 'react';
+import { Route, Redirect, BrowserRouter } from 'react-router-dom';
 import ChatsList from './ChatsList';
 import ChatSingle from './ChatSingle';
 import Registration from './Registration';
-import { Route, Redirect, BrowserRouter } from 'react-router-dom';
 
-class App extends React.Component{
-  render () {
+class App extends React.Component {
+  public render () {
     return(
        <BrowserRouter>
          <div>
