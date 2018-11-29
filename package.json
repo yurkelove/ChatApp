@@ -12,7 +12,7 @@
     "serv": "static build"
   },
   "devDependencies": {
-    "@types/react": "^16.7.7",
+    "@types/react": "^16.7.8",
     "@types/react-dom": "^16.0.10",
     "@types/react-router-dom": "^4.3.1",
     "awesome-typescript-loader": "^5.2.1",
@@ -37,8 +37,9 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.6.0",
-    "material-ui": "^0.20.2",
-    "react": "^16.6.3",
+    "material-ui": "^1.0.0-beta.47",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0-alpha.2",
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1"
   }
