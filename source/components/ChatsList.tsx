@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 class ChatsList extends React.Component{
     render (){
         return(

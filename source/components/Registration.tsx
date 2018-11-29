@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {AppBar} from '../../node_modules/@material-ui/core/index';
-import {Tabs} from '../../node_modules/@material-ui/core/index';
-import {Tab} from '../../node_modules/@material-ui/core/index';
-import {Typography} from '../../node_modules/@material-ui/core/index';
-
+import AppBar from '@material-ui/core/AppBar/AppBar';
+import Tabs from '@material-ui/core/Tabs/Tabs';
+import Tab from '@material-ui/core/Tab/Tab';
+import Registr from './registrPage'
+import Authorize from './authorizePage'
 
 
 class Registration extends React.Component{
@@ -11,29 +11,28 @@ class Registration extends React.Component{
         value: 'one',
     };
 
-    render (){
-        const { value } = this.state;
-        return(
-            <div>
-            <AppBar position="static">
-                <Tabs value={value} onChange={this.handleChange}>
-                    <Tab value="one" label="Войти"/>
-                    <Tab value="two" label="Зарегистрироваться" />
-                </Tabs>
-            </AppBar>
-                {/*{value === 'one' && <TabContainer>*/}
-                  {/*<input type='text' placeholder='введите ваше имя'/>*/}
-                  {/*<input type='text' placeholder='електронная почта'/>*/}
-                {/*</TabContainer>}*/}
-                {/*{value === 'two' && <TabContainer>*/}
-                  {/*<input type='text' placeholder='введите ваше имя'/>*/}
-                  {/*<input type='text' placeholder='електронная почта'/>*/}
-                  {/*<input type='text' placeholder='електронная почта'/>*/}
-                {/*</TabContainer>}*/}
-            </div>
-
-        );
+  render (){
+    const enum Setting {
+        value
     }
+    const { value } = this.state;
+      return(
+        <div>
+          <AppBar position="static">
+            <Tabs value = {Setting.value} onChange={this.handleChange}>
+              <Tab enum = {value}  label="Войти"/>
+              <Tab enum = {value} label="Зарегистрироваться" />
+            </Tabs>
+          </AppBar>
+					<div>
+            <Registr/>
+            <Authorize/>
+          </div>
+        </div>
+
+
+      );
+  }
 
     handleChange = (event : any, value: any) => {
         this.setState({ value });

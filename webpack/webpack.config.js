@@ -6,6 +6,7 @@ const sass = require('./sass');
 const extractCSS = require('./css.extract');
 const uglifyJS = require('./uglify');
 
+
 const PATHS = { // Обьект
 	source : path.join(__dirname,'..','source'), // Исходники приложения
 	build : path.join(__dirname,'..','build') // Результаты работы webpack
@@ -40,7 +41,7 @@ const common = merge([
 		],
 	},
 	extractCSS(),
-	sass()
+	sass(),
 ]);
 
 
