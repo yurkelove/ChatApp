@@ -2,50 +2,68 @@ import * as React from 'react';
 import {Button} from '@material-ui/core/Button';
 import {TextField} from '@material-ui/core/TextField';
 
-class Registration extends React.Component {
-  state = {
-    inpValue: ""
+
+
+
+interface IState {
+  loginValue : string;
+  passwordValue : string;
+  confirmPassword : string;
+}
+
+class Registration extends React.Component<{},IState> {
+  state:IState = {
+    loginValue: '',
+    passwordValue: '',
+    confirmPassword: ''
   };
-  render (){
+
+  public render (){
+    const{loginValue,passwordValue,confirmPassword} = this.state;
     return(
       <div>
-        <TextField type="text"
-          value = {this.state.inpValue}
+        <TextField
+          type="text"
+          value = {loginValue}
           label="Логин"
           variant="outlined"
           placeholder="Введите ваш логин"
-          onChange={this.onChangeHandleReg}
+          onChange={this.handler("loginValue")}
         />
-        <TextField type="password"
-                   value = {this.state.inpValue}
-                   label="Пароль"
-                   variant="outlined"
-                   placeholder="Введите ваш пароль"
-                   onChange={this.onChangeHandleReg}
+        <TextField
+          type="password"
+          value = {passwordValue}
+          label="Пароль"
+          variant="outlined"
+          placeholder="Введите ваш пароль"
+          onChange={this.handler("passwordValue")}
         />
-        <TextField type="password"
-                   value = {this.state.inpValue}
-                   label="Пароль" variant="outlined"
-                   placeholder="Подтверждения пароля"
-                   onChange={this.onChangeHandleReg}
+        <TextField
+          type="password"
+          value = {confirmPassword}
+          label="Пароль" variant="outlined"
+          placeholder="Подтверждения пароля"
+          onChange={this.handler("confirmPassword")}
         />
         <Button variant="contained" color="primary" onClick={this.handleAuthorize}>Зарегистрироваться</Button>
       </div>
     );
   }
 
-  handleAuthorize = () => {
+  private handleAuthorize = () => {
      console.log('Вы зарегистрированы');
   };
 
-  onChangeHandleReg = (event:any) => {
-    this.setState({
-      inpValue: event.target.value,
+  private handler = (field:string) => {
+    return (event:React.SyntheticEvent<{value: string}>) => {
+      this.setState({
+        [field]: event.target.value
     });
+    };
   };
+
 }
 
 export default  Registration;
 
 
-// интерфейс почитать для state-component

@@ -2,41 +2,55 @@ import * as React from 'react';
 import {Button} from '@material-ui/core/Button';
 import {TextField} from '@material-ui/core/TextField';
 
-class Authorization extends React.Component{
-  state = {
-      inpValue: ''
+
+interface IState {
+  loginValue : string;
+  passwordValue : string;
+}
+
+class Authorization extends React.Component<{},IState> {
+  state:IState = {
+    loginValue: '',
+    passwordValue: '',
   };
-  render (){
+
+  public render (){
+    const{loginValue,passwordValue} = this.state;
     return(
       <div>
-        <TextField type="text"
-                   value={this.state.inpValue}
-                   label="Логин"
-                   variant="outlined"
-                   placeholder="Введите ваш логин"
-                   onChange={this.onChangeHandleAuth}
+        <TextField
+          type="text"
+          value={loginValue}
+          label="Логин"
+          variant="outlined"
+          placeholder="Введите ваш логин"
+          onChange={this.handler("loginValue")}
         />
-        <TextField type="password"
-                   value={this.state.inpValue}
-                   label="Пароль"
-                   variant="outlined"
-                   placeholder="Подтверждения пароля"
-                   onChange={this.onChangeHandleAuth}
+        <TextField
+          type="password"
+          value={passwordValue}
+          label="Пароль"
+          variant="outlined"
+          placeholder="Подтверждения пароля"
+          onChange={this.handler("passwordValue")}
         />
         <Button variant="contained" color="primary" onClick={this.handleRegistration}>Войти</Button>
       </div>
     );
   }
 
-  handleRegistration = () => {
+  private handleRegistration = () => {
     console.log('Вы вошли');
   };
 
-  onChangeHandleAuth = (event:any) => {
-    this.setState({
-      inpValue: event.target.value,
-    });
+  private handler = (field:string) => {
+    return (event:React.SyntheticEvent<{value: string}>) => {
+      this.setState({
+        [field]: event.target.value
+      });
+    };
   };
+
 }
 
 export default  Authorization;

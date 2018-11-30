@@ -7,7 +7,7 @@ import { Route, Redirect, BrowserRouter } from 'react-router-dom';
 
 
 class App extends React.Component{
-  render (){
+  public render (){
     return(
       <BrowserRouter>
         <div>

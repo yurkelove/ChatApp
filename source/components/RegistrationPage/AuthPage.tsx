@@ -1,11 +1,10 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import {AppBar} from '@material-ui/core/AppBar';
-import {Tabs} from '@material-ui/core/Tabs';
-import {Tab} from '@material-ui/core/Tab';
+import {AppBar} from '@material-ui/core/AppBar/AppBar';
+import {Tabs} from '@material-ui/core/Tabs/Tabs';
+import {Tab} from '@material-ui/core/Tab/Tab';
 import Registration from './Registration';
 import Authorization from './Authorization';
-import {Typography} from '@material-ui/core/Typography';
+import {Typography} from '@material-ui/core/Typography/Typography';
 
 
 const enum Setting {
@@ -21,15 +20,12 @@ function TabContainer(props : any) {
   );
 }
 
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 class AuthPage extends React.Component{
   state = {
     currentTab: Setting.Auth
   };
-  render (){
+  public render (){
   const { currentTab } = this.state;
     return(
       <div>
@@ -51,7 +47,7 @@ class AuthPage extends React.Component{
     );
   }
   // Возможное значение только из этого enum
-  handleChange = (event : any, value: Setting) => {
+  private handleChange = (event : any, value: Setting) => {
     this.setState({ value });
   };
 
