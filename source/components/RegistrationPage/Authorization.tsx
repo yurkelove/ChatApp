@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Button} from '@material-ui/core/Button';
-import {TextField} from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 
 interface IState {
@@ -43,10 +43,11 @@ class Authorization extends React.Component<{},IState> {
     console.log('Вы вошли');
   };
 
-  private handler = (field:string) => {
+  private handler = (field:keyof IState) => {
     return (event:React.SyntheticEvent<{value: string}>) => {
       this.setState({
-        [field]: event.target.value
+        ...this.state,
+        [field]: (event.target as HTMLInputElement).value
       });
     };
   };

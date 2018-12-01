@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {AppBar} from '@material-ui/core/AppBar/AppBar';
-import {Tabs} from '@material-ui/core/Tabs/Tabs';
-import {Tab} from '@material-ui/core/Tab/Tab';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import Registration from './Registration';
 import Authorization from './Authorization';
-import {Typography} from '@material-ui/core/Typography/Typography';
+import Typography from '@material-ui/core/Typography';
 
 
 const enum Setting {
