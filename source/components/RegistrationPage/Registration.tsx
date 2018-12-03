@@ -5,6 +5,12 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { registration } from '../../store/actions/registration';
 
+interface IProps {
+  registration : () => void;
+  login:string;
+  password:string;
+  confirmPassword : string;
+}
 
 interface IState {
   loginValue : string;
@@ -12,11 +18,11 @@ interface IState {
   confirmPassword : string;
 }
 
-class Registration extends React.Component<{},IState> {
+class Registration extends React.Component<IProps,IState> {
   state:IState = {
     loginValue: '',
     passwordValue: '',
-    confirmPassword: ''
+    confirmPassword: '',
   };
 
   public render (){
@@ -53,7 +59,9 @@ class Registration extends React.Component<{},IState> {
 
   private onBtnHandler = () => {
     console.log('Успешно');
+    this.props.registration(); // Передали из пропсов , а именно из registration-action
   };
+
 
   private handler = (field:keyof IState) => {
     return (event:React.SyntheticEvent<{value: string}>) => {
@@ -74,11 +82,7 @@ function mapStateToProps(state:any) {
 function mapDispatchToProps(dispatch:any) {
   return bindActionCreators({
     ...registration,
-  }, dispatch({
-    onClickHandler : () => {
-      dispatch();
-    }
-  }));
+  }, dispatch);
 
 }
 

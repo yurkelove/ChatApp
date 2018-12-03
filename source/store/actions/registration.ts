@@ -1,6 +1,6 @@
 import { REGISTRATION_ACTION_TYPE } from '../reducers/registration';
 
-export function registration (login:string,password:string) {
+export function registration (login:string,password:string,confirmPassword:string) {
 
   return (dispatch:any) => {
     dispatch({

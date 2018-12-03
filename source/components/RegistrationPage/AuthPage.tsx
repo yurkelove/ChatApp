@@ -37,10 +37,19 @@ class AuthPage extends React.Component{
         </AppBar>
         <div>
           {currentTab === Setting.Auth && <TabContainer>
-            <Authorization/>
+            <Authorization
+              password={"password"}
+							login={"string"}
+							registration= {() => {}}
+            />
           </TabContainer>}
           {currentTab === Setting.Registration && <TabContainer>
-            <Registration/>
+            <Registration
+              confirmPassword={"confirmPassword"}
+              password={"password"}
+              login={"string"}
+              registration= {() => {}}
+            />
           </TabContainer>}
         </div>
       </div>

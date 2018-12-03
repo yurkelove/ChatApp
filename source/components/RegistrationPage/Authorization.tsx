@@ -6,13 +6,19 @@ import { connect } from 'react-redux'
 import { authorization } from '../../store/actions/authorization';
 
 
+interface IProps {
+  registration : () => void;
+  login:string;
+  password:string;
+
+}
 
 interface IState {
   loginValue : string;
   passwordValue : string;
 }
 
-class Authorization extends React.Component<{},IState> {
+class Authorization extends React.Component<IProps,IState> {
   state:IState = {
     loginValue: '',
     passwordValue: '',
@@ -45,6 +51,7 @@ class Authorization extends React.Component<{},IState> {
 
   private handleRegistration = () => {
     console.log('Вы вошли');
+    this.props.registration();
   };
 
   private handler = (field:keyof IState) => {
