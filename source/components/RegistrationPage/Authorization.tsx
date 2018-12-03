@@ -1,6 +1,10 @@
 import * as React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { authorization } from '../../store/actions/authorization';
+
 
 
 interface IState {
@@ -54,4 +58,17 @@ class Authorization extends React.Component<{},IState> {
 
 }
 
-export default  Authorization;
+function mapStateToProps(state:any) {
+  return {...state};
+}
+
+function mapDispatchToProps(dispatch:any) {
+  return bindActionCreators({
+    ...authorization,
+  }, dispatch);
+}
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Authorization);

@@ -14,7 +14,7 @@ const initialState:IAuthorizationState = { //передать из interface
 };
 
 
-const enum AUTHORIZATION_ACTION_TYPE {
+export const enum AUTHORIZATION_ACTION_TYPE {
   LOADING = 'AUTHORIZATION_LOADING',
   SUCCESS = 'AUTHORIZATION_SUCCESS',
   FAILURE = 'AUTHORIZATION_FAILURE'

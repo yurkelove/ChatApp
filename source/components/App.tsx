@@ -2,7 +2,6 @@ import * as React from 'react';
 import ChatList from './ChatsList';
 import ChatSingle from './ChatSingle';
 import AuthPage from './RegistrationPage/AuthPage';
-import { connect } from 'react-redux';
 import { Route, Redirect, BrowserRouter } from 'react-router-dom';
 
 
@@ -22,7 +21,4 @@ class App extends React.Component{
   }
 }
 
-export default connect(
-  state => ({}),
-  dispatch => ({})
-)(App);
+export default App;

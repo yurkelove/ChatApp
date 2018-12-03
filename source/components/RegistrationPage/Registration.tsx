@@ -1,6 +1,9 @@
 import * as React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { registration } from '../../store/actions/registration';
 
 
 interface IState {
@@ -43,13 +46,13 @@ class Registration extends React.Component<{},IState> {
           placeholder="Подтверждения пароля"
           onChange={this.handler("confirmPassword")}
         />
-        <Button variant="contained" color="primary" onClick={this.handleAuthorize}>Зарегистрироваться</Button>
+        <Button variant="contained" color="primary" onClick={this.onBtnHandler}>Зарегистрироваться</Button>
       </div>
     );
   }
 
-  private handleAuthorize = () => {
-     console.log('Вы зарегистрированы');
+  private onBtnHandler = () => {
+    console.log('Успешно');
   };
 
   private handler = (field:keyof IState) => {
@@ -63,6 +66,23 @@ class Registration extends React.Component<{},IState> {
 
 }
 
-export default  Registration;
+
+function mapStateToProps(state:any) {
+  return {...state};
+}
+
+function mapDispatchToProps(dispatch:any) {
+  return bindActionCreators({
+    ...registration,
+  }, dispatch({
+    onClickHandler : () => {
+      dispatch();
+    }
+  }));
+
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);
 
 
