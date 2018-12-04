@@ -1,8 +1,6 @@
 import { REGISTRATION_ACTION_TYPE } from '../reducers/registration';
 
-export function registration (login:string,password:string,confirmPassword:string) {
-
-  return (dispatch:any) => {
+export const registration = (login:string,password:string,confirmPassword:string) => (dispatch:any) => {
     dispatch({
       type: REGISTRATION_ACTION_TYPE.LOADING
     });
@@ -11,23 +9,18 @@ export function registration (login:string,password:string,confirmPassword:strin
         resolve();
       }, 5000 );
     });
-      promise.then(function(){
+      promise.then(() => {
         dispatch({
           type: REGISTRATION_ACTION_TYPE.SUCCESS
         })
       }
       )
-      .catch( function(){
+      .catch( (error) =>{
         dispatch({
           type: REGISTRATION_ACTION_TYPE.FAILURE,
+          error: error.message
         })
       }
       );
-    dispatch({
-      type:REGISTRATION_ACTION_TYPE.FAILURE,
-    })
-  }
-}
-
-
+};
 

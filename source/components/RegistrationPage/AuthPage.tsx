@@ -40,7 +40,7 @@ class AuthPage extends React.Component{
             <Authorization
               password={"password"}
 							login={"string"}
-							registration= {() => {}}
+							authorization = {() => {}}
             />
           </TabContainer>}
           {currentTab === Setting.Registration && <TabContainer>
@@ -56,8 +56,8 @@ class AuthPage extends React.Component{
     );
   }
   // Возможное значение только из этого enum
-  private handleChange = (event : any, value: Setting) => {
-    this.setState({ value });
+  private handleChange = (event : any, currentTab: Setting.Auth) => {
+    this.setState({ currentTab });
   };
 
 

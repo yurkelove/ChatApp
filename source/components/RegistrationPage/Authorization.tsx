@@ -3,14 +3,13 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { authorization } from '../../store/actions/authorization';
-
+import  * as authorization from '../../store/actions/authorization';
+import {AuthorizationState} from '../../store/actions/authorization';
 
 interface IProps {
-  registration : () => void;
+  authorization : () => void;
   login:string;
   password:string;
-
 }
 
 interface IState {
@@ -50,8 +49,7 @@ class Authorization extends React.Component<IProps,IState> {
   }
 
   private handleRegistration = () => {
-    console.log('Вы вошли');
-    this.props.registration();
+    this.props.authorization();
   };
 
   private handler = (field:keyof IState) => {
@@ -65,8 +63,12 @@ class Authorization extends React.Component<IProps,IState> {
 
 }
 
-function mapStateToProps(state:any) {
-  return {...state};
+function mapStateToProps(state:AuthorizationState) {
+  return {
+    loading: state.registration.loading,
+    success: state.registration.success,
+    error: state.registration.error
+  }
 }
 
 function mapDispatchToProps(dispatch:any) {

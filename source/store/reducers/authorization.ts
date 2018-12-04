@@ -1,16 +1,14 @@
-interface IAuthorizationState {
+export interface IAuthorizationState {
   success: string,
   loading: boolean,
   error: string,
-  type:string,
 }
 
 
-const initialState:IAuthorizationState = { //передать из interface
+const initialState:IAuthorizationState = {
   success: null,
   loading: false,
   error: null,
-  type:''
 };
 
 
@@ -21,7 +19,7 @@ export const enum AUTHORIZATION_ACTION_TYPE {
 }
 
 
-export default function authorization(state = initialState,action:IAuthorizationState)   {
+export default function authorization(state:IAuthorizationState = initialState,action:any)   {
   switch(action.type){
     case AUTHORIZATION_ACTION_TYPE.LOADING:
       return {

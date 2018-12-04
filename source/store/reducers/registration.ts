@@ -1,15 +1,13 @@
-interface IRegistrationState {
+export interface IRegistrationState {
   success: string,
   loading: boolean,
   error: string,
-  type:string,
 }
 
 const initialState:IRegistrationState = {
   success: null,
   loading: false,
   error: null,
-  type:''
 };
 
 
@@ -20,8 +18,7 @@ export const enum REGISTRATION_ACTION_TYPE {
 }
 
 
-//передать из interface state :
-export default function registration(state = initialState,action:IRegistrationState)   {
+export default function registration(state:IRegistrationState = initialState,action:any)   {
   switch(action.type){
     case REGISTRATION_ACTION_TYPE.LOADING:
       return {

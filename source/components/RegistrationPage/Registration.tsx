@@ -3,7 +3,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { registration } from '../../store/actions/registration';
+import * as registration from '../../store/actions/registration';
+import { IRegistrationState } from '../../store/actions/registration';
 
 interface IProps {
   registration : () => void;
@@ -58,7 +59,6 @@ class Registration extends React.Component<IProps,IState> {
   }
 
   private onBtnHandler = () => {
-    console.log('Успешно');
     this.props.registration(); // Передали из пропсов , а именно из registration-action
   };
 
@@ -75,8 +75,12 @@ class Registration extends React.Component<IProps,IState> {
 }
 
 
-function mapStateToProps(state:any) {
-  return {...state};
+function mapStateToProps(state:IRegistrationState) {
+  return {
+    loading: state.registration.loading,
+    success: state.registration.success,
+    error: state.registration.error
+  };
 }
 
 function mapDispatchToProps(dispatch:any) {

@@ -1,8 +1,6 @@
 import { AUTHORIZATION_ACTION_TYPE } from '../reducers/authorization';
 
-export function authorization(login:string,password:string) {
-
-	return  (dispatch:any) => {
+export const authorization = (login:string,password:string) => (dispatch:any) => {
 		dispatch({
 			type: AUTHORIZATION_ACTION_TYPE.LOADING
 		});
@@ -11,24 +9,18 @@ export function authorization(login:string,password:string) {
 				resolve();
 			}, 5000 );
 		});
-		promise
-      .then(function(){
-         dispatch({
-					 type: AUTHORIZATION_ACTION_TYPE.SUCCESS
+		promise.then(() => {
+        dispatch({
+          type: AUTHORIZATION_ACTION_TYPE.SUCCESS
 				})
 			}
-		)
-			.catch( function(){
-			   dispatch({
-           type: AUTHORIZATION_ACTION_TYPE.FAILURE,
-        })
+		).catch( () => {
+		  dispatch({
+        type: AUTHORIZATION_ACTION_TYPE.FAILURE,
+      })
 			}
 			);
-		dispatch({
-			type:AUTHORIZATION_ACTION_TYPE.FAILURE,
-		})
-	}
-}
+};
 
 
 
