@@ -4,13 +4,13 @@ import TextField from '@material-ui/core/TextField';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as registration from '../../store/actions/registration';
-import { IRegistrationState } from '../../store/actions/registration';
+import { IRegistrationState } from '../../store/reducers/registration';
 
 interface IProps {
-  registration : () => void;
-  login:string;
-  password:string;
-  confirmPassword : string;
+  registration? : () => void;//param
+  login?:string;
+  password?:string;
+  confirmPassword?: string;
 }
 
 interface IState {
@@ -59,6 +59,7 @@ class Registration extends React.Component<IProps,IState> {
   }
 
   private onBtnHandler = () => {
+    //interface-передать
     this.props.registration(); // Передали из пропсов , а именно из registration-action
   };
 
@@ -75,7 +76,7 @@ class Registration extends React.Component<IProps,IState> {
 }
 
 
-function mapStateToProps(state:IRegistrationState) {
+function mapStateToProps(state:any):IRegistrationState {
   return {
     loading: state.registration.loading,
     success: state.registration.success,

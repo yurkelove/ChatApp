@@ -4,12 +4,12 @@ import TextField from '@material-ui/core/TextField';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import  * as authorization from '../../store/actions/authorization';
-import {AuthorizationState} from '../../store/actions/authorization';
+import {IAuthorizationState} from '../../store/reducers/authorization';
 
 interface IProps {
-  authorization : () => void;
-  login:string;
-  password:string;
+  authorization? : () => void;
+  login?:string;
+  password?:string;
 }
 
 interface IState {
@@ -63,7 +63,7 @@ class Authorization extends React.Component<IProps,IState> {
 
 }
 
-function mapStateToProps(state:AuthorizationState) {
+function mapStateToProps(state:any):IAuthorizationState {
   return {
     loading: state.registration.loading,
     success: state.registration.success,
