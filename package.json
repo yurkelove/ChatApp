@@ -12,8 +12,10 @@
     "serv": "static build"
   },
   "devDependencies": {
-    "@types/react": "^16.7.8",
-    "@types/react-dom": "^16.0.10",
+    "@types/prop-types": "15.5.3",
+    "@types/react": "^16.7.13",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-redux": "^6.0.10",
     "@types/react-router-dom": "^4.3.1",
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^1.0.1",
@@ -37,7 +39,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.6.0",
-    "@types/react-redux": "^6.0.10",
+    "@material-ui/styles": "^3.0.0-alpha.2",
     "material-ui": "^1.0.0-beta.47",
     "prop-types": "^15.6.2",
     "react": "^16.7.0-alpha.2",
@@ -46,6 +48,9 @@
     "react-router-dom": "^4.3.1",
     "redux": "4.0.1",
     "redux-devtools-extension": "^2.13.7",
-    "redux-thunk": "^2.3.0"
+    "redux-observable": "^1.0.0",
+    "redux-thunk": "^2.3.0",
+    "typesafe-actions": "^2.0.4",
+    "utility-types": "^2.0.0"
   }
 }

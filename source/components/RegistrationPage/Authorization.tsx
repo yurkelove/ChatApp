@@ -5,51 +5,76 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import  * as authorization from '../../store/actions/authorization';
 import {IAuthorizationState} from '../../store/reducers/authorization';
+import { withStyles } from '@material-ui/core/styles';
 
-interface IProps {
-  authorization? : () => void;
-  login?:string;
-  password?:string;
-}
+const styles ={
+  authBtn: {
+    backgroundColor: 'red',
+  }
+};
 
-interface IState {
+
+type IProps  = Readonly<{
+  authorization: (login:string,password:string) => void;
+  login: string;
+  password:string;
+  classes: any;
+}>;
+
+type IState = Readonly < {
   loginValue : string;
   passwordValue : string;
-}
+  errorLogin: string;
+  errorPassword: string;
+}>;
 
+
+@withStyles(styles)
 class Authorization extends React.Component<IProps,IState> {
   state:IState = {
     loginValue: '',
     passwordValue: '',
+    errorLogin: null,
+    errorPassword: null
   };
 
   public render (){
-    const{loginValue,passwordValue} = this.state;
+    const{loginValue,passwordValue,errorLogin,errorPassword} = this.state;
     return(
       <div>
         <TextField
+          error={loginValue.length === 0 ? true : false}
           type="text"
           value={loginValue}
-          label="Логин"
+          label={errorLogin !== null ? errorLogin : "Логин" }
           variant="outlined"
-          placeholder="Введите ваш логин"
           onChange={this.handler("loginValue")}
         />
         <TextField
+          error={passwordValue.length === 0 ? true : false}
           type="password"
           value={passwordValue}
-          label="Пароль"
+          label={errorPassword !== null  ? errorPassword : "Пароль" }
           variant="outlined"
-          placeholder="Подтверждения пароля"
           onChange={this.handler("passwordValue")}
         />
-        <Button variant="contained" color="primary" onClick={this.handleRegistration}>Войти</Button>
+        <Button className={this.props.classes.authBtn} variant="contained" color="primary" onClick={this.handleRegistration}>Войти</Button>
       </div>
+
     );
   }
 
   private handleRegistration = () => {
-    this.props.authorization();
+    let login = this.state.loginValue;
+    let password = this.state.passwordValue;
+    console.log(this.state.errorLogin);
+    console.log(this.state.errorPassword);
+    this.props.authorization(login,password);
+    this.setState({
+      errorLogin: 'Вы не ввели логин',
+      errorPassword: 'Вы не ввели пароль'
+    })
+
   };
 
   private handler = (field:keyof IState) => {
@@ -76,7 +101,6 @@ function mapDispatchToProps(dispatch:any) {
     ...authorization,
   }, dispatch);
 }
-
 
 
 
