@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as registration from '../../store/actions/registration';
 import { IRegistrationState } from '../../store/reducers/registration';
+import { minSymbol, isNotEmpty } from '../../validation/validation';
 
 
 type IProps = Readonly<{
@@ -18,9 +19,9 @@ type IState = Readonly < {
   loginValue : string;
   passwordValue : string;
   confirmPassword : string;
-  errorConfirmValue: string,
-  errorPasswordValue: string,
-  errorLoginValue: string
+  errorLogin: string;
+  errorPassword: string;
+  errorConfirmPassword:string
 }>;
 
 class Registration extends React.Component<IProps,IState> {
@@ -28,19 +29,19 @@ class Registration extends React.Component<IProps,IState> {
     loginValue: '',
     passwordValue: '',
     confirmPassword: '',
-    errorLoginValue: 'Вы не ввели логин',
-    errorPasswordValue: 'Вы не ввели пароль',
-    errorConfirmValue: 'Вы забыли ввести подверждение пароля'
+    errorLogin: null,
+    errorPassword: null,
+    errorConfirmPassword: null
   };
 
   public render (){
-    const{loginValue,passwordValue,confirmPassword} = this.state;
+    const{loginValue,passwordValue,confirmPassword,errorLogin,errorPassword,errorConfirmPassword} = this.state;
     return(
       <div>
         <TextField
           type="text"
           value = {loginValue}
-          label="Логин"
+          label={errorLogin !== null ? errorLogin : "Логин" }
           variant="outlined"
           placeholder="Введите ваш логин"
           onChange={this.handler("loginValue")}
@@ -48,7 +49,7 @@ class Registration extends React.Component<IProps,IState> {
         <TextField
           type="password"
           value = {passwordValue}
-          label="Пароль"
+          label={errorPassword !== null ? errorPassword : "Пароль" }
           variant="outlined"
           placeholder="Введите ваш пароль"
           onChange={this.handler("passwordValue")}
@@ -56,29 +57,39 @@ class Registration extends React.Component<IProps,IState> {
         <TextField
           type="password"
           value = {confirmPassword}
-          label="Пароль" variant="outlined"
+          label={errorConfirmPassword !== null ? errorConfirmPassword : "Подтвердить пароль" }
+          variant="outlined"
           placeholder="Подтверждения пароля"
           onChange={this.handler("confirmPassword")}
         />
-        <Button variant="contained" color="primary" onClick={this.onBtnHandler}>Зарегистрироваться</Button>
+        <Button variant="contained" color="primary" onClick={this.handleRegistration}>Зарегистрироваться</Button>
       </div>
     );
   }
 
-  private onBtnHandler = () => {
+  private handleRegistration = () => {
     //interface-передать
     let login = this.state.loginValue;
     let password = this.state.passwordValue;
     let confirmPassword = this.state.confirmPassword;
-    this.props.registration(login,password,confirmPassword); // Передали из пропсов , а именно из registration-action
-    if(login === ''){
-      console.log( this.state.errorLoginValue );
-     }else if(password === ''){
-       console.log(this.state.errorPasswordValue)
-     }else if(confirmPassword === ''){
-       console.log(this.state.errorConfirmValue);
-     }
-    
+    let errorLogin = isNotEmpty(login) ? null : 'Пустой логин';
+    let errorPassword = isNotEmpty(password) ? null : 'Пустой пароль';
+    let errorConfirmPassword = isNotEmpty(confirmPassword) ? null : 'Поле пустое';
+    if(errorPassword === null){
+      errorPassword = minSymbol(password) ? null : 'Пароль должен быть минимум 6 символов'
+    }
+    if(errorLogin === null && errorPassword === null){
+      this.props.registration(login,password,confirmPassword);
+    }
+    // Проверку на совпадение пароль с подверждение пароля 
+    if(password !== confirmPassword){
+      errorConfirmPassword = errorConfirmPassword ? null : 'Не верный пароль'
+    }
+    this.setState({
+      errorLogin,
+      errorPassword,
+      errorConfirmPassword
+    })
   };
 
 

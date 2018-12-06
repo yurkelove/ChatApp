@@ -6,12 +6,15 @@ import { connect } from 'react-redux'
 import  * as authorization from '../../store/actions/authorization';
 import {IAuthorizationState} from '../../store/reducers/authorization';
 import { withStyles } from '@material-ui/core/styles';
+import { minSymbol, isNotEmpty } from '../../validation/validation';
 
-const styles ={
-  authBtn: {
-    backgroundColor: 'red',
-  }
-};
+
+
+// const styles ={
+//   authBtn: {
+//     backgroundColor: 'red',
+//   }
+// };
 
 
 type IProps  = Readonly<{
@@ -28,8 +31,20 @@ type IState = Readonly < {
   errorPassword: string;
 }>;
 
+// type PROPS = IProps & IState;
 
-@withStyles(styles)
+
+@withStyles<IProps,IState>({
+  root: {
+    color: 'blue',
+  },
+  loginValue__input: {
+    margin: '0 auto'
+  }
+})
+
+
+// @withStyles(styles) 
 class Authorization extends React.Component<IProps,IState> {
   state:IState = {
     loginValue: '',
@@ -44,6 +59,7 @@ class Authorization extends React.Component<IProps,IState> {
       <div>
         <TextField
           error={loginValue.length === 0 ? true : false}
+          className={this.props.classes.loginValue__input}
           type="text"
           value={loginValue}
           label={errorLogin !== null ? errorLogin : "Логин" }
@@ -58,24 +74,29 @@ class Authorization extends React.Component<IProps,IState> {
           variant="outlined"
           onChange={this.handler("passwordValue")}
         />
-        <Button className={this.props.classes.authBtn} variant="contained" color="primary" onClick={this.handleRegistration}>Войти</Button>
+        <Button className={this.props.classes.root} variant="contained" color="primary" onClick={this.handleAuthorization}>Войти</Button>
       </div>
 
     );
   }
 
-  private handleRegistration = () => {
-    let login = this.state.loginValue;
-    let password = this.state.passwordValue;
-    console.log(this.state.errorLogin);
-    console.log(this.state.errorPassword);
-    this.props.authorization(login,password);
+  private handleAuthorization = () => {
+    const login = this.state.loginValue;
+    const password = this.state.passwordValue;
+    let errorLogin = isNotEmpty(login) ? null : 'Пустой логин';
+    let errorPassword = isNotEmpty(password) ? null : 'Пустой пароль';
+    if(errorPassword === null){
+      errorPassword = minSymbol(password) ? null : 'Пароль должен быть минимум 6 символов'
+    }
+    if(errorLogin === null && errorPassword === null){
+      this.props.authorization(login, password);
+    } 
+    // Обнуляем если ошибки нет, или записываем текст если она есть
     this.setState({
-      errorLogin: 'Вы не ввели логин',
-      errorPassword: 'Вы не ввели пароль'
+      errorLogin,
+      errorPassword
     })
-
-  };
+};
 
   private handler = (field:keyof IState) => {
     return (event:React.SyntheticEvent<{value: string}>) => {
@@ -87,6 +108,7 @@ class Authorization extends React.Component<IProps,IState> {
   };
 
 }
+
 
 function mapStateToProps(state:any):IAuthorizationState {
   return {

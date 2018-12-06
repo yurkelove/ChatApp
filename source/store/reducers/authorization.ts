@@ -38,6 +38,7 @@ export default function authorization(state:IAuthorizationState = initialState,a
         success: false,
         error: action.error
       };
+      // Если нечего не изменилось вернем стейт
     default:
       return state
   }
