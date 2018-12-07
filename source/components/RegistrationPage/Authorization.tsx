@@ -34,14 +34,14 @@ type IState = Readonly < {
 type PROPS = IProps & IState;
 
 
-@withStyles<PROPS>({
-  root: {
-    color: 'blue',
-  },
-  loginValue__input: {
-    margin: '0 auto'
-  }
-})
+// @withStyles<PROPS>({
+//   root: {
+//     color: 'blue',
+//   },
+//   loginValue__input: {
+//     margin: '0 auto'
+//   }
+// })
 
 
 // @withStyles(styles) 

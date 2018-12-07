@@ -1,15 +1,14 @@
 import { AUTHORIZATION_ACTION_TYPE } from '../reducers/authorization';
+import axios from 'axios';
+const url = 'http://localhost:3000/authorization';
+
 
 export const authorization = (login:string,password:string) => (dispatch:any) => {
 		dispatch({
 			type: AUTHORIZATION_ACTION_TYPE.LOADING
 		});
-		const promise = new Promise((resolve:any,reject:any) => {
-			setTimeout( () => {
-				resolve();
-			}, 5000 );
-		});
-		promise.then(() => {
+		axios.get(url)
+		.then(() => {
         dispatch({
           type: AUTHORIZATION_ACTION_TYPE.SUCCESS
 				})
