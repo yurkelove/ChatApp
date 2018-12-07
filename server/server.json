@@ -1,0 +1,8 @@
+{
+    "authorization": { 
+        "success" : true
+    },
+    "registration": {
+        "success" : true
+    }
+}

@@ -31,10 +31,10 @@ type IState = Readonly < {
   errorPassword: string;
 }>;
 
-// type PROPS = IProps & IState;
+type PROPS = IProps & IState;
 
 
-@withStyles<IProps,IState>({
+@withStyles<PROPS>({
   root: {
     color: 'blue',
   },
