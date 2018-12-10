@@ -2,15 +2,11 @@ import * as React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import {withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import Registration from './Registration';
 import Authorization from './Authorization';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-
-
-interface IAuthPageClasses {
-  classes: any;
-};
+import {IClasses} from './styles';
 
 const styles ={
   page_container: {
@@ -22,7 +18,6 @@ const styles ={
     width: '720px'
   },
   tab_btn: {
-    width: '100%',
     textAlign: 'center',
     margin: '0 auto'
   }
@@ -42,7 +37,7 @@ function TabContainer(props : any) {
 }
 
 
-class AuthPage extends React.Component<IAuthPageClasses>{
+class AuthPage extends React.Component<IClasses>{
   state = {
     currentTab: Setting.Auth
   };

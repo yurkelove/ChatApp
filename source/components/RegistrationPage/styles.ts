@@ -1,8 +1,4 @@
-export interface IRegistrClasses {
-    classes: any;
-};
-
-export interface IAuthClasses {
+export interface IClasses {
     classes: any;
 };
 
@@ -17,7 +13,11 @@ export const styles ={
     },
     regBtn: {
       backgroundColor: '#1976d2',
-      marginTop: '20px'
+      marginTop: '10px'
+    },
+    authBtn: {
+      backgroundColor: '#1976d2',
+      marginTop: '10px'
     },
   };
   

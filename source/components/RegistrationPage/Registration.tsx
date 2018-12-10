@@ -1,17 +1,17 @@
 import * as React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import {bindActionCreators } from 'redux';
+import {connect } from 'react-redux';
+import {withStyles } from '@material-ui/core/styles';
 import * as registration from '../../store/actions/registration';
-import { IRegistrationState } from '../../store/reducers/registration';
-import { minSymbol, isNotEmpty } from '../../validation/validation';
-import { withStyles } from '@material-ui/core/styles';
-import {IRegistrClasses, styles} from './styles'
+import {IRegistrationState } from '../../store/reducers/registration';
+import {minSymbol, isNotEmpty } from '../../validation/validation';
+import {IClasses, styles} from './styles';
 
 
 
-interface IProps extends IRegistrClasses{
+interface IProps extends IClasses{
   registration : (login:string,password:string,confirmPassword:string) => void;
   login:string;
   password:string;
