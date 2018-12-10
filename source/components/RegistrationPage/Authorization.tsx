@@ -31,11 +31,11 @@ const styles ={
   },
 };
 
-interface IClasses {
+interface IRegistrClasses {
   classes: any;
 };
 
-interface IProps extends IClasses {
+interface IProps extends IRegistrClasses {
   authorization: (login:string,password:string) => void;
   login: string;
   password:string;
