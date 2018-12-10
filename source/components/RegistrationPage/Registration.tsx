@@ -7,26 +7,9 @@ import * as registration from '../../store/actions/registration';
 import { IRegistrationState } from '../../store/reducers/registration';
 import { minSymbol, isNotEmpty } from '../../validation/validation';
 import { withStyles } from '@material-ui/core/styles';
+import {IRegistrClasses, styles} from './styles'
 
 
-const styles ={
-  item_textfield: {
-    width:'100%',
-    margin: '20px 0'
-  },
-  items_container: {
-    textAlign: 'center'
-  },
-  regBtn: {
-    backgroundColor: '#1976d2',
-    marginTop: '20px'
-  },
-};
-
-
-interface IRegistrClasses {
-  classes: any;
-};
 
 interface IProps extends IRegistrClasses{
   registration : (login:string,password:string,confirmPassword:string) => void;

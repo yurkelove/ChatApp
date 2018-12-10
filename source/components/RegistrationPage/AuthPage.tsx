@@ -20,6 +20,11 @@ const styles ={
   },
   items_container: {
     width: '720px'
+  },
+  tab_btn: {
+    width: '100%',
+    textAlign: 'center',
+    margin: '0 auto'
   }
 };
 
@@ -49,8 +54,8 @@ class AuthPage extends React.Component<IAuthPageClasses>{
         <div className={classes.items_container}>
           <AppBar className={classes.AppBar} position="static">
             <Tabs value={currentTab} onChange={this.handleChange}>
-              <Tab value={Setting.Auth}  label="Войти"/>
-              <Tab value={Setting.Registration} label="Зарегистрироваться" />
+              <Tab className={classes.tab_btn} value={Setting.Auth}  label="Войти"/>
+              <Tab className={classes.tab_btn}value={Setting.Registration} label="Зарегистрироваться" />
             </Tabs>
           </AppBar>
           <div>

@@ -7,28 +7,10 @@ import  * as authorization from '../../store/actions/authorization';
 import {IAuthorizationState} from '../../store/reducers/authorization';
 import { withStyles } from '@material-ui/core/styles';
 import { minSymbol, isNotEmpty } from '../../validation/validation';
+import {IAuthClasses, styles} from './styles'
 
 
-
-const styles ={
-  item_textfield: {
-    width:'100%',
-    margin: '20px 0'
-  },
-  items_container: {
-    textAlign: 'center'
-  },
-  authBtn: {
-    backgroundColor: '#1976d2',
-    marginTop: '20px'
-  },
-};
-
-interface IRegistrClasses {
-  classes: any;
-};
-
-interface IProps extends IRegistrClasses {
+interface IProps extends IAuthClasses {
   authorization: (login:string,password:string) => void;
   login: string;
   password:string;
