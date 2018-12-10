@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { Route, Redirect, BrowserRouter } from 'react-router-dom';
 import ChatList from './ChatsList';
 import ChatSingle from './ChatSingle';
 import AuthPage from './RegistrationPage/AuthPage';
-import { Route, Redirect, BrowserRouter } from 'react-router-dom';
 
 
-// на всю ширину и высоту 
+
+// на всю ширину и высоту
 class App extends React.Component{
   public render (){
     return(

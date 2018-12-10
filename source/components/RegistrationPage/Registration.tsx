@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import {bindActionCreators } from 'redux';
 import {connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 import {withStyles } from '@material-ui/core/styles';
 import * as registration from '../../store/actions/registration';
 import {IRegistrationState } from '../../store/reducers/registration';
@@ -16,7 +16,7 @@ interface IProps extends IClasses{
   login:string;
   password:string;
   confirmPassword: string;
-};
+}
 
 type IState = Readonly < {
   loginValue : string;
@@ -27,6 +27,7 @@ type IState = Readonly < {
   errorConfirmPassword:string
 }>;
 
+@(withStyles as any)(styles)
 class Registration extends React.Component<IProps,IState> {
   state:IState = {
     loginValue: '',
@@ -42,15 +43,17 @@ class Registration extends React.Component<IProps,IState> {
     const{loginValue,passwordValue,confirmPassword,errorLogin,errorPassword,errorConfirmPassword} = this.state;
     return(
       <div className={classes.items_container}>
-        <TextField className={classes.item_textfield}
+        <TextField
+          className={classes.item_textfield}
           type="text"
-          value = {loginValue}
+          value={loginValue}
           label={errorLogin !== null ? errorLogin : "Логин" }
           variant="outlined"
           placeholder="Введите ваш логин"
           onChange={this.handler("loginValue")}
         />
-        <TextField className={classes.item_textfield}
+        <TextField
+          className={classes.item_textfield}
           type="password"
           value = {passwordValue}
           label={errorPassword !== null ? errorPassword : "Пароль" }
@@ -58,7 +61,8 @@ class Registration extends React.Component<IProps,IState> {
           placeholder="Введите ваш пароль"
           onChange={this.handler("passwordValue")}
         />
-        <TextField className={classes.item_textfield}
+        <TextField
+          className={classes.item_textfield}
           type="password"
           value = {confirmPassword}
           label={errorConfirmPassword !== null ? errorConfirmPassword : "Подтвердить пароль" }
@@ -85,7 +89,7 @@ class Registration extends React.Component<IProps,IState> {
     if(errorLogin === null && errorPassword === null){
       this.props.registration(login,password,confirmPassword);
     }
-    // Проверку на совпадение пароль с подверждение пароля 
+    // Проверку на совпадение пароль с подверждение пароля
     if(password !== confirmPassword){
       errorConfirmPassword = errorConfirmPassword ? null : 'Не верный пароль'
     }
@@ -124,5 +128,5 @@ function mapDispatchToProps(dispatch:any) {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Registration));
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);
 

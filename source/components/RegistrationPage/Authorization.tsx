@@ -1,9 +1,9 @@
 import * as React from 'react';
+import {bindActionCreators } from 'redux';
+import {connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {withStyles } from '@material-ui/core/styles';
-import {bindActionCreators } from 'redux';
-import {connect } from 'react-redux';
 import  * as authorization from '../../store/actions/authorization';
 import {IAuthorizationState} from '../../store/reducers/authorization';
 import {minSymbol, isNotEmpty } from '../../validation/validation';
@@ -14,7 +14,7 @@ interface IProps extends IClasses {
   authorization: (login:string,password:string) => void;
   login: string;
   password:string;
-};
+}
 
 type IState = Readonly < {
   loginValue : string;
@@ -23,9 +23,9 @@ type IState = Readonly < {
   errorPassword: string;
 }>;
 
-
+@(withStyles as any)(styles)
 class Authorization extends React.Component<IProps, IState> {
-  state:IState = {
+  public state:IState = {
     loginValue: '',
     passwordValue: '',
     errorLogin: null,
@@ -35,20 +35,22 @@ class Authorization extends React.Component<IProps, IState> {
 
   public render (){
     const classes = this.props.classes;
-    const{loginValue,passwordValue,errorLogin,errorPassword} = this.state;
+    const{ loginValue,passwordValue,errorLogin,errorPassword } = this.state;
     return(
       <div className={classes.items_container}>
-        <TextField  className={classes.item_textfield}
+        <TextField
           // error={loginValue.length === 0 ? true : false}
+          className={classes.item_textfield}
           type="text"
           value={loginValue}
-          label={errorLogin !== null ? errorLogin : "Логин" }
+          label={ errorLogin !== null ? errorLogin : "Логин" }
           variant="outlined"
           onChange={this.handler("loginValue")}
         />
 
-        <TextField className={classes.item_textfield}
+        <TextField
           // error={passwordValue.length === 0 ? true : false}
+          className={classes.item_textfield}
           type="password"
           value={passwordValue}
           label={errorPassword !== null  ? errorPassword : "Пароль" }
@@ -106,4 +108,4 @@ function mapDispatchToProps(dispatch:any) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Authorization));
+export default connect(mapStateToProps, mapDispatchToProps)(Authorization);

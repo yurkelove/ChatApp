@@ -8,8 +8,7 @@ export const styles ={
       margin: '20px 0'
     },
     items_container: {
-  
-      textAlign: 'center'
+      textAlign: "center"
     },
     regBtn: {
       backgroundColor: '#1976d2',

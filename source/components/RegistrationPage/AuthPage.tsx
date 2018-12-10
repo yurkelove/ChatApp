@@ -8,6 +8,7 @@ import Registration from './Registration';
 import Authorization from './Authorization';
 import {IClasses} from './styles';
 
+
 const styles ={
   page_container: {
     display: 'flex',
@@ -18,7 +19,7 @@ const styles ={
     width: '720px'
   },
   tab_btn: {
-    textAlign: 'center',
+    textAlign: "center",
     margin: '0 auto'
   }
 };
@@ -36,9 +37,9 @@ function TabContainer(props : any) {
   );
 }
 
-
+@(withStyles as any)(styles)
 class AuthPage extends React.Component<IClasses>{
-  state = {
+  public state = {
     currentTab: Setting.Auth
   };
   public render (){
@@ -50,21 +51,23 @@ class AuthPage extends React.Component<IClasses>{
           <AppBar className={classes.AppBar} position="static">
             <Tabs value={currentTab} onChange={this.handleChange}>
               <Tab className={classes.tab_btn} value={Setting.Auth}  label="Войти"/>
-              <Tab className={classes.tab_btn}value={Setting.Registration} label="Зарегистрироваться" />
+              <Tab className={classes.tab_btn} value={Setting.Registration} label="Зарегистрироваться" />
             </Tabs>
           </AppBar>
           <div>
             {currentTab === Setting.Auth && <TabContainer>
               <Authorization
-              password={"password"}
-              login={"string"}
+              password="password"
+              login="string"
+              classes={classes}
               />
             </TabContainer>}
             {currentTab === Setting.Registration && <TabContainer>
               <Registration
-              password={"password"}
+              password="password"
               login={"string"}
-              confirmPassword={"confirmPassword"}
+              confirmPassword="confirmPassword"
+							classes={classes}
               />
             </TabContainer>}
           </div>
@@ -77,8 +80,6 @@ class AuthPage extends React.Component<IClasses>{
     this.setState({ currentTab });
   };
 
-
-
 }
 
-export default withStyles(styles)(AuthPage);
+export default AuthPage;
