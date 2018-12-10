@@ -5,7 +5,7 @@ import AuthPage from './RegistrationPage/AuthPage';
 import { Route, Redirect, BrowserRouter } from 'react-router-dom';
 
 
-
+// на всю ширину и высоту 
 class App extends React.Component{
   public render (){
     return(

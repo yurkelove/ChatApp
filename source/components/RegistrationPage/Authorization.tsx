@@ -11,19 +11,9 @@ import { minSymbol, isNotEmpty } from '../../validation/validation';
 
 
 const styles ={
-  login_container: {
-    display: 'inline-block',
-    margin: '20px 0',
-    width: '100%',
-    textAlign: 'center'
-  },
-  password_container:{
-    display: 'inline-block',
-    width: '100%',
-    textAlign: 'center'
-  },
-  button_container: {
-    textAlign: 'center'
+  item_textfield: {
+    width:'100%',
+    margin: '20px 0'
   },
   authBtn: {
     backgroundColor: '#1976d2',
@@ -57,24 +47,22 @@ class Authorization extends React.Component<IProps, IState> {
     errorPassword: null
   };
 
+
   public render (){
     const classes = this.props.classes;
     const{loginValue,passwordValue,errorLogin,errorPassword} = this.state;
     return(
-      <div>
-        <div className={classes.login_container}>
-        <TextField 
+      <div className={classes.items_container}>
+        <TextField  className={classes.item_textfield}
           // error={loginValue.length === 0 ? true : false}
-          className={classes.login_input}
           type="text"
           value={loginValue}
           label={errorLogin !== null ? errorLogin : "Логин" }
           variant="outlined"
           onChange={this.handler("loginValue")}
         />
-        </div>
-        <div className={classes.password_container}>
-        <TextField
+
+        <TextField className={classes.item_textfield}
           // error={passwordValue.length === 0 ? true : false}
           type="password"
           value={passwordValue}
@@ -82,10 +70,7 @@ class Authorization extends React.Component<IProps, IState> {
           variant="outlined"
           onChange={this.handler("passwordValue")}
         />
-        </div>
-        <div className={classes.button_container}>
         <Button className={classes.authBtn} variant="contained" color="primary" onClick={this.handleAuthorization}>Войти</Button>
-        </div>
       </div>
 
     );

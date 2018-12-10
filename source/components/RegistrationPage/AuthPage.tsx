@@ -8,18 +8,19 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 
-interface IClasses {
+interface IAuthPageClasses {
   classes: any;
 };
 
 const styles ={
-  items_container:{
-    width: '720px',
-    margin: '0 auto'
+  page_container: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  AppBar: {
+  items_container: {
     width: '720px',
-    margin: '0 auto'
+    textAlign: 'center'
   }
 };
 
@@ -37,7 +38,7 @@ function TabContainer(props : any) {
 }
 
 
-class AuthPage extends React.Component<IClasses>{
+class AuthPage extends React.Component<IAuthPageClasses>{
   state = {
     currentTab: Setting.Auth
   };
@@ -45,29 +46,31 @@ class AuthPage extends React.Component<IClasses>{
   const classes = this.props.classes;
   const { currentTab } = this.state;
     return(
-      <div>
-        <AppBar className={classes.AppBar} position="static">
-          <Tabs value={currentTab} onChange={this.handleChange}>
-            <Tab value={Setting.Auth}  label="Войти"/>
-            <Tab value={Setting.Registration} label="Зарегистрироваться" />
-          </Tabs>
-        </AppBar>
+      <div className={classes.page_container}>
         <div className={classes.items_container}>
-          {currentTab === Setting.Auth && <TabContainer>
-            <Authorization
-            password={"password"}
-            login={"string"}
-            />
-          </TabContainer>}
-          {currentTab === Setting.Registration && <TabContainer>
-            <Registration
-            password={"password"}
-            login={"string"}
-            confirmPassword={"confirmPassword"}
-            />
-          </TabContainer>}
+          <AppBar className={classes.AppBar} position="static">
+            <Tabs value={currentTab} onChange={this.handleChange}>
+              <Tab value={Setting.Auth}  label="Войти"/>
+              <Tab value={Setting.Registration} label="Зарегистрироваться" />
+            </Tabs>
+          </AppBar>
+          <div>
+            {currentTab === Setting.Auth && <TabContainer>
+              <Authorization
+              password={"password"}
+              login={"string"}
+              />
+            </TabContainer>}
+            {currentTab === Setting.Registration && <TabContainer>
+              <Registration
+              password={"password"}
+              login={"string"}
+              confirmPassword={"confirmPassword"}
+              />
+            </TabContainer>}
+          </div>
         </div>
-      </div>
+    </div>
     );
   }
   // Возможное значение только из этого enum

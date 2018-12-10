@@ -10,25 +10,9 @@ import { withStyles } from '@material-ui/core/styles';
 
 
 const styles ={
-  login_container: {
-    display: 'inline-block',
-    margin: '20px 0',
-    width: '100%',
-    textAlign: 'center'
-  },
-  password_container:{
-    display: 'inline-block',
-    width: '100%',
-    textAlign: 'center'
-  },
-  button_container: {
-    textAlign: 'center'
-  },
-  confirmPassword_container:{
-    display: 'inline-block',
-    width: '100%',
-    marginTop: '20px',
-    textAlign: 'center'
+  item_textfield: {
+    width:'100%',
+    margin: '20px 0'
   },
   regBtn: {
     backgroundColor: '#1976d2',
@@ -72,8 +56,7 @@ class Registration extends React.Component<IProps,IState> {
     const{loginValue,passwordValue,confirmPassword,errorLogin,errorPassword,errorConfirmPassword} = this.state;
     return(
       <div>
-        <div className={classes.login_container}>
-        <TextField
+        <TextField className={classes.item_textfield}
           type="text"
           value = {loginValue}
           label={errorLogin !== null ? errorLogin : "Логин" }
@@ -81,9 +64,7 @@ class Registration extends React.Component<IProps,IState> {
           placeholder="Введите ваш логин"
           onChange={this.handler("loginValue")}
         />
-        </div>
-        <div className={classes.password_container}>
-        <TextField
+        <TextField className={classes.item_textfield}
           type="password"
           value = {passwordValue}
           label={errorPassword !== null ? errorPassword : "Пароль" }
@@ -91,9 +72,7 @@ class Registration extends React.Component<IProps,IState> {
           placeholder="Введите ваш пароль"
           onChange={this.handler("passwordValue")}
         />
-        </div>
-        <div className={classes.confirmPassword_container}>
-        <TextField
+        <TextField className={classes.item_textfield}
           type="password"
           value = {confirmPassword}
           label={errorConfirmPassword !== null ? errorConfirmPassword : "Подтвердить пароль" }
@@ -101,10 +80,7 @@ class Registration extends React.Component<IProps,IState> {
           placeholder="Подтверждения пароля"
           onChange={this.handler("confirmPassword")}
         />
-        </div>
-        <div className={classes.button_container}>
         <Button className={classes.regBtn} variant="contained" color="primary" onClick={this.handleRegistration}>Зарегистрироваться</Button>
-        </div>
       </div>
     );
   }
