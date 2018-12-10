@@ -14,6 +14,9 @@ const styles ={
     width:'100%',
     margin: '20px 0'
   },
+  items_container: {
+    textAlign: 'center'
+  },
   regBtn: {
     backgroundColor: '#1976d2',
     marginTop: '20px'
@@ -55,7 +58,7 @@ class Registration extends React.Component<IProps,IState> {
     const classes = this.props.classes;
     const{loginValue,passwordValue,confirmPassword,errorLogin,errorPassword,errorConfirmPassword} = this.state;
     return(
-      <div>
+      <div className={classes.items_container}>
         <TextField className={classes.item_textfield}
           type="text"
           value = {loginValue}

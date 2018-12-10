@@ -19,8 +19,7 @@ const styles ={
     justifyContent: 'center',
   },
   items_container: {
-    width: '720px',
-    textAlign: 'center'
+    width: '720px'
   }
 };
 

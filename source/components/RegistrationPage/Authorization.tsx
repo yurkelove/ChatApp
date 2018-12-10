@@ -15,6 +15,9 @@ const styles ={
     width:'100%',
     margin: '20px 0'
   },
+  items_container: {
+    textAlign: 'center'
+  },
   authBtn: {
     backgroundColor: '#1976d2',
     marginTop: '20px'
