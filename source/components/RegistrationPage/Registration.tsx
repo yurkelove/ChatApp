@@ -6,14 +6,47 @@ import { connect } from 'react-redux'
 import * as registration from '../../store/actions/registration';
 import { IRegistrationState } from '../../store/reducers/registration';
 import { minSymbol, isNotEmpty } from '../../validation/validation';
+import { withStyles } from '@material-ui/core/styles';
 
 
-type IProps = Readonly<{
+const styles ={
+  login_container: {
+    display: 'inline-block',
+    margin: '20px 0',
+    width: '100%',
+    textAlign: 'center'
+  },
+  password_container:{
+    display: 'inline-block',
+    width: '100%',
+    textAlign: 'center'
+  },
+  button_container: {
+    textAlign: 'center'
+  },
+  confirmPassword_container:{
+    display: 'inline-block',
+    width: '100%',
+    marginTop: '20px',
+    textAlign: 'center'
+  },
+  regBtn: {
+    backgroundColor: '#1976d2',
+    marginTop: '20px'
+  },
+};
+
+
+interface IClasses {
+  classes: any;
+};
+
+interface IProps extends IClasses{
   registration : (login:string,password:string,confirmPassword:string) => void;
   login:string;
   password:string;
   confirmPassword: string;
-}>;
+};
 
 type IState = Readonly < {
   loginValue : string;
@@ -35,9 +68,11 @@ class Registration extends React.Component<IProps,IState> {
   };
 
   public render (){
+    const classes = this.props.classes;
     const{loginValue,passwordValue,confirmPassword,errorLogin,errorPassword,errorConfirmPassword} = this.state;
     return(
       <div>
+        <div className={classes.login_container}>
         <TextField
           type="text"
           value = {loginValue}
@@ -46,6 +81,8 @@ class Registration extends React.Component<IProps,IState> {
           placeholder="Введите ваш логин"
           onChange={this.handler("loginValue")}
         />
+        </div>
+        <div className={classes.password_container}>
         <TextField
           type="password"
           value = {passwordValue}
@@ -54,6 +91,8 @@ class Registration extends React.Component<IProps,IState> {
           placeholder="Введите ваш пароль"
           onChange={this.handler("passwordValue")}
         />
+        </div>
+        <div className={classes.confirmPassword_container}>
         <TextField
           type="password"
           value = {confirmPassword}
@@ -62,7 +101,10 @@ class Registration extends React.Component<IProps,IState> {
           placeholder="Подтверждения пароля"
           onChange={this.handler("confirmPassword")}
         />
-        <Button variant="contained" color="primary" onClick={this.handleRegistration}>Зарегистрироваться</Button>
+        </div>
+        <div className={classes.button_container}>
+        <Button className={classes.regBtn} variant="contained" color="primary" onClick={this.handleRegistration}>Зарегистрироваться</Button>
+        </div>
       </div>
     );
   }
@@ -120,7 +162,5 @@ function mapDispatchToProps(dispatch:any) {
 
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Registration);
-
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Registration));
 

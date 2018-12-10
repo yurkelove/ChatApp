@@ -5,7 +5,23 @@ import Tab from '@material-ui/core/Tab';
 import Registration from './Registration';
 import Authorization from './Authorization';
 import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
 
+
+interface IClasses {
+  classes: any;
+};
+
+const styles ={
+  items_container:{
+    width: '720px',
+    margin: '0 auto'
+  },
+  AppBar: {
+    width: '720px',
+    margin: '0 auto'
+  }
+};
 
 const enum Setting {
   Auth,
@@ -21,26 +37,26 @@ function TabContainer(props : any) {
 }
 
 
-class AuthPage extends React.Component{
+class AuthPage extends React.Component<IClasses>{
   state = {
     currentTab: Setting.Auth
   };
   public render (){
+  const classes = this.props.classes;
   const { currentTab } = this.state;
     return(
       <div>
-        <AppBar position="static">
+        <AppBar className={classes.AppBar} position="static">
           <Tabs value={currentTab} onChange={this.handleChange}>
             <Tab value={Setting.Auth}  label="Войти"/>
             <Tab value={Setting.Registration} label="Зарегистрироваться" />
           </Tabs>
         </AppBar>
-        <div>
+        <div className={classes.items_container}>
           {currentTab === Setting.Auth && <TabContainer>
             <Authorization
             password={"password"}
             login={"string"}
-            classes={"any"}
             />
           </TabContainer>}
           {currentTab === Setting.Registration && <TabContainer>
@@ -63,4 +79,4 @@ class AuthPage extends React.Component{
 
 }
 
-export default AuthPage;
+export default withStyles(styles)(AuthPage);

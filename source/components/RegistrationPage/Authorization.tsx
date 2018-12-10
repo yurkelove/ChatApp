@@ -10,19 +10,36 @@ import { minSymbol, isNotEmpty } from '../../validation/validation';
 
 
 
-// const styles ={
-//   authBtn: {
-//     backgroundColor: 'red',
-//   }
-// };
+const styles ={
+  login_container: {
+    display: 'inline-block',
+    margin: '20px 0',
+    width: '100%',
+    textAlign: 'center'
+  },
+  password_container:{
+    display: 'inline-block',
+    width: '100%',
+    textAlign: 'center'
+  },
+  button_container: {
+    textAlign: 'center'
+  },
+  authBtn: {
+    backgroundColor: '#1976d2',
+    marginTop: '20px'
+  },
+};
 
+interface IClasses {
+  classes: any;
+};
 
-type IProps  = Readonly<{
+interface IProps extends IClasses {
   authorization: (login:string,password:string) => void;
   login: string;
   password:string;
-  classes: any;
-}>;
+};
 
 type IState = Readonly < {
   loginValue : string;
@@ -31,21 +48,8 @@ type IState = Readonly < {
   errorPassword: string;
 }>;
 
-type PROPS = IProps & IState;
 
-
-// @withStyles<PROPS>({
-//   root: {
-//     color: 'blue',
-//   },
-//   loginValue__input: {
-//     margin: '0 auto'
-//   }
-// })
-
-
-// @withStyles(styles) 
-class Authorization extends React.Component<IProps,IState> {
+class Authorization extends React.Component<IProps, IState> {
   state:IState = {
     loginValue: '',
     passwordValue: '',
@@ -54,27 +58,34 @@ class Authorization extends React.Component<IProps,IState> {
   };
 
   public render (){
+    const classes = this.props.classes;
     const{loginValue,passwordValue,errorLogin,errorPassword} = this.state;
     return(
       <div>
-        <TextField
-          error={loginValue.length === 0 ? true : false}
-          className={this.props.classes.loginValue__input}
+        <div className={classes.login_container}>
+        <TextField 
+          // error={loginValue.length === 0 ? true : false}
+          className={classes.login_input}
           type="text"
           value={loginValue}
           label={errorLogin !== null ? errorLogin : "Логин" }
           variant="outlined"
           onChange={this.handler("loginValue")}
         />
+        </div>
+        <div className={classes.password_container}>
         <TextField
-          error={passwordValue.length === 0 ? true : false}
+          // error={passwordValue.length === 0 ? true : false}
           type="password"
           value={passwordValue}
           label={errorPassword !== null  ? errorPassword : "Пароль" }
           variant="outlined"
           onChange={this.handler("passwordValue")}
         />
-        <Button className={this.props.classes.root} variant="contained" color="primary" onClick={this.handleAuthorization}>Войти</Button>
+        </div>
+        <div className={classes.button_container}>
+        <Button className={classes.authBtn} variant="contained" color="primary" onClick={this.handleAuthorization}>Войти</Button>
+        </div>
       </div>
 
     );
@@ -90,7 +101,7 @@ class Authorization extends React.Component<IProps,IState> {
     }
     if(errorLogin === null && errorPassword === null){
       this.props.authorization(login, password);
-    } 
+    }
     // Обнуляем если ошибки нет, или записываем текст если она есть
     this.setState({
       errorLogin,
@@ -125,5 +136,4 @@ function mapDispatchToProps(dispatch:any) {
 }
 
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Authorization);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Authorization));
