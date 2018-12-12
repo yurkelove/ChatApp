@@ -94,9 +94,9 @@ class Authorization extends React.Component<IProps, IState> {
 
 function mapStateToProps(state:any):IAuthorizationState {
   return {
-    loading: state.registration.loading,
-    success: state.registration.success,
-    error: state.registration.error
+    loading: state.authorization.loading,
+    success: state.authorization.success,
+    error: state.authorization.error
   }
 }
 

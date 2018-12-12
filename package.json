@@ -43,8 +43,9 @@
   "dependencies": {
     "@material-ui/core": "^3.6.0",
     "@material-ui/styles": "^3.0.0-alpha.2",
-    "material-ui": "^1.0.0-beta.47",
+    "@types/react-router": "^4.4.2",
     "axios": "^0.18.0",
+    "material-ui": "^1.0.0-beta.47",
     "prop-types": "^15.6.2",
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.6.3",
