@@ -3,7 +3,7 @@ export interface IClasses {
 };
 
 export const styles ={
-    item_textfield: {
+    item_textField: {
       width:'100%',
       margin: '20px 0'
     },
@@ -19,6 +19,5 @@ export const styles ={
       marginTop: '10px'
     },
   };
-  
-  
-  
+
+

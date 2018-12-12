@@ -4,9 +4,6 @@ import ChatList from './ChatsList';
 import ChatSingle from './ChatSingle';
 import AuthPage from './RegistrationPage/AuthPage';
 
-
-
-// на всю ширину и высоту
 class App extends React.Component{
   public render (){
     return(

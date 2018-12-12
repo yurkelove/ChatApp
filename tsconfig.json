@@ -6,6 +6,9 @@
       "jsx": "react",
       "allowJs": true,
       "allowSyntheticDefaultImports": true,
-      "experimentalDecorators": true,
+      "experimentalDecorators": true
+    },
+    "jsRules":{
+      "object-literal-sort-keys": false
     }
 }

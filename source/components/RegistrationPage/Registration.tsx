@@ -29,7 +29,7 @@ type IState = Readonly < {
 
 @(withStyles as any)(styles)
 class Registration extends React.Component<IProps,IState> {
-  state:IState = {
+  public state:IState = {
     loginValue: '',
     passwordValue: '',
     confirmPassword: '',
@@ -44,28 +44,28 @@ class Registration extends React.Component<IProps,IState> {
     return(
       <div className={classes.items_container}>
         <TextField
-          className={classes.item_textfield}
+          className={classes.item_textField}
           type="text"
           value={loginValue}
-          label={errorLogin !== null ? errorLogin : "Логин" }
+          label={errorLogin !== null ? errorLogin : "Логин"}
           variant="outlined"
           placeholder="Введите ваш логин"
           onChange={this.handler("loginValue")}
         />
         <TextField
-          className={classes.item_textfield}
+          className={classes.item_textField}
           type="password"
-          value = {passwordValue}
-          label={errorPassword !== null ? errorPassword : "Пароль" }
+          value={passwordValue}
+          label={errorPassword !== null ? errorPassword : "Пароль"}
           variant="outlined"
           placeholder="Введите ваш пароль"
           onChange={this.handler("passwordValue")}
         />
         <TextField
-          className={classes.item_textfield}
+          className={classes.item_textField}
           type="password"
-          value = {confirmPassword}
-          label={errorConfirmPassword !== null ? errorConfirmPassword : "Подтвердить пароль" }
+          value={confirmPassword}
+          label={errorConfirmPassword !== null ? errorConfirmPassword : "Подтвердить пароль"}
           variant="outlined"
           placeholder="Подтверждения пароля"
           onChange={this.handler("confirmPassword")}
@@ -76,11 +76,10 @@ class Registration extends React.Component<IProps,IState> {
   }
 
   private handleRegistration = () => {
-    //interface-передать
-    let login = this.state.loginValue;
-    let password = this.state.passwordValue;
-    let confirmPassword = this.state.confirmPassword;
-    let errorLogin = isNotEmpty(login) ? null : 'Пустой логин';
+    const login = this.state.loginValue;
+    const password = this.state.passwordValue;
+    const confirmPassword = this.state.confirmPassword;
+    const errorLogin = isNotEmpty(login) ? null : 'Пустой логин';
     let errorPassword = isNotEmpty(password) ? null : 'Пустой пароль';
     let errorConfirmPassword = isNotEmpty(confirmPassword) ? null : 'Поле пустое';
     if(errorPassword === null){
@@ -89,7 +88,6 @@ class Registration extends React.Component<IProps,IState> {
     if(errorLogin === null && errorPassword === null){
       this.props.registration(login,password,confirmPassword);
     }
-    // Проверку на совпадение пароль с подверждение пароля
     if(password !== confirmPassword){
       errorConfirmPassword = errorConfirmPassword ? null : 'Не верный пароль'
     }

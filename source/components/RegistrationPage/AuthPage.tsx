@@ -54,32 +54,60 @@ class AuthPage extends React.Component<IClasses>{
               <Tab className={classes.tab_btn} value={Setting.Registration} label="Зарегистрироваться" />
             </Tabs>
           </AppBar>
-          <div>
-            {currentTab === Setting.Auth && <TabContainer>
-              <Authorization
-              password="password"
-              login="string"
-              classes={classes}
-              />
-            </TabContainer>}
-            {currentTab === Setting.Registration && <TabContainer>
-              <Registration
-              password="password"
-              login={"string"}
-              confirmPassword="confirmPassword"
-							classes={classes}
-              />
-            </TabContainer>}
-          </div>
+        <div>
+          <h1>Тут метод отрисовки</h1>
+        </div>
         </div>
     </div>
     );
   }
   // Возможное значение только из этого enum
-  private handleChange = (event : any, currentTab: Setting.Auth) => {
+  private handleChange = (event : any, currentTab: Setting) => {
     this.setState({ currentTab });
   };
+
+  private renderCurrentTab = (currentTab:Setting,classes:any) => {
+    if(currentTab === Setting.Auth){
+      return(
+        <TabContainer>
+          <Authorization
+            password="password"
+            login="string"
+            classes={classes}
+          />
+        </TabContainer>
+      )
+    }else if(currentTab === Setting.Registration){
+      return (
+        <TabContainer>
+          <Registration
+            password="password"
+            login={"string"}
+            confirmPassword="confirmPassword"
+            classes={classes}
+          />
+        </TabContainer>
+      )
+    }
+  }
 
 }
 
 export default AuthPage;
+
+
+// {currentTab === Setting.Auth && <TabContainer>
+// 	<Authorization
+// 		password="password"
+// 		login="string"
+// 		classes={classes}
+// 	/>
+// </TabContainer>}
+// {currentTab === Setting.Registration && <TabContainer>
+// 	<Registration
+// 		password="password"
+// 		login={"string"}
+// 		confirmPassword="confirmPassword"
+// 		classes={classes}
+// 	/>
+// </TabContainer>}

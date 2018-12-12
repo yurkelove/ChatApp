@@ -7,7 +7,13 @@
       "tslint-config-prettier",
       "tslint-react"
     ],
+    "jsRules":{
+      "object-literal-sort-keys": false
+    },
     "rules": {
+      "no-submodule-imports": false,
+      "named-imports-order": "any",
+      "ordered-imports": false,
       "cyclomatic-complexity": false,
       "increment-decrement": false,
       "newline-before-return": false,
@@ -24,6 +30,7 @@
           "allow-declarations",
           "allow-named-functions"
       ],
+
       "completed-docs": false,
       "no-any": false,
       "no-magic-numbers": false,
@@ -38,14 +45,13 @@
       "strict-type-predicates": false,
       "triple-equals": [true, "allow-undefined-check"],
       "typedef": false,
-  
       "ban": [true,
         ["describe", "only"],
         ["it", "only"]
       ],
-  
+
       "interface-name": false,
-      "file-header": [true,
+      "file-header": [false,
         "Copyright \\d{4} Palantir Technologies, Inc."
       ],
       "max-classes-per-file": false,
@@ -68,7 +74,8 @@
         "allow-leading-underscore",
         "allow-pascal-case"
       ],
-      "linebreak-style": false
+      "linebreak-style": false,
+      "object-literal-sort-keys": false,
+      "jsx-boolean-value": false
     }
   }
-  

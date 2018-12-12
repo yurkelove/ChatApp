@@ -40,20 +40,19 @@ class Authorization extends React.Component<IProps, IState> {
       <div className={classes.items_container}>
         <TextField
           // error={loginValue.length === 0 ? true : false}
-          className={classes.item_textfield}
+          className={classes.item_textField}
           type="text"
           value={loginValue}
-          label={ errorLogin !== null ? errorLogin : "Логин" }
+          label={errorLogin !== null ? errorLogin : "Логин"}
           variant="outlined"
           onChange={this.handler("loginValue")}
         />
-
         <TextField
           // error={passwordValue.length === 0 ? true : false}
-          className={classes.item_textfield}
+          className={classes.item_textField}
           type="password"
           value={passwordValue}
-          label={errorPassword !== null  ? errorPassword : "Пароль" }
+          label={errorPassword !== null  ? errorPassword : "Пароль"}
           variant="outlined"
           onChange={this.handler("passwordValue")}
         />
@@ -66,7 +65,7 @@ class Authorization extends React.Component<IProps, IState> {
   private handleAuthorization = () => {
     const login = this.state.loginValue;
     const password = this.state.passwordValue;
-    let errorLogin = isNotEmpty(login) ? null : 'Пустой логин';
+    const errorLogin = isNotEmpty(login) ? null : 'Пустой логин';
     let errorPassword = isNotEmpty(password) ? null : 'Пустой пароль';
     if(errorPassword === null){
       errorPassword = minSymbol(password) ? null : 'Пароль должен быть минимум 6 символов'
