@@ -55,7 +55,7 @@ class AuthPage extends React.Component<IClasses>{
             </Tabs>
           </AppBar>
         <div>
-          <h1>Тут метод отрисовки</h1>
+          {this.renderCurrentTab(currentTab,classes)}
         </div>
         </div>
     </div>
@@ -96,18 +96,3 @@ class AuthPage extends React.Component<IClasses>{
 export default AuthPage;
 
 
-// {currentTab === Setting.Auth && <TabContainer>
-// 	<Authorization
-// 		password="password"
-// 		login="string"
-// 		classes={classes}
-// 	/>
-// </TabContainer>}
-// {currentTab === Setting.Registration && <TabContainer>
-// 	<Registration
-// 		password="password"
-// 		login={"string"}
-// 		confirmPassword="confirmPassword"
-// 		classes={classes}
-// 	/>
-// </TabContainer>}
