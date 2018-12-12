@@ -19,7 +19,7 @@ const styles ={
     width: '720px'
   },
   tab_btn: {
-    textAlign: "center",
+    textAlign: 'center',
     margin: '0 auto'
   }
 };
@@ -31,7 +31,7 @@ const enum Setting {
 
 function TabContainer(props : any) {
   return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
+    <Typography component="div">
       {props.children}
     </Typography>
   );
@@ -43,8 +43,8 @@ class AuthPage extends React.Component<IClasses>{
     currentTab: Setting.Auth
   };
   public render (){
-  const classes = this.props.classes;
-  const { currentTab } = this.state;
+    const classes = this.props.classes;
+    const { currentTab } = this.state;
     return(
       <div className={classes.page_container}>
         <div className={classes.items_container}>
@@ -54,39 +54,36 @@ class AuthPage extends React.Component<IClasses>{
               <Tab className={classes.tab_btn} value={Setting.Registration} label="Зарегистрироваться" />
             </Tabs>
           </AppBar>
-        <div>
-          {this.renderCurrentTab(currentTab,classes)}
+        <TabContainer>
+          {this.renderCurrentTab(currentTab)}
+        </TabContainer>
         </div>
-        </div>
-    </div>
+      </div>
     );
   }
   // Возможное значение только из этого enum
-  private handleChange = (event : any, currentTab: Setting) => {
+  private handleChange = (event:React.SyntheticEvent<object>, currentTab: Setting) => {
     this.setState({ currentTab });
   };
 
-  private renderCurrentTab = (currentTab:Setting,classes:any) => {
+  private renderCurrentTab = (currentTab:Setting) => {
+    const classes = this.props.classes;
     if(currentTab === Setting.Auth){
       return(
-        <TabContainer>
-          <Authorization
-            password="password"
-            login="string"
-            classes={classes}
-          />
-        </TabContainer>
+        <Authorization
+          password="password"
+          login="string"
+          classes={classes}
+        />
       )
     }else if(currentTab === Setting.Registration){
       return (
-        <TabContainer>
-          <Registration
-            password="password"
-            login={"string"}
-            confirmPassword="confirmPassword"
-            classes={classes}
-          />
-        </TabContainer>
+        <Registration
+          password="password"
+          login={"string"}
+          confirmPassword="confirmPassword"
+          classes={classes}
+        />
       )
     }
   }
