@@ -39,7 +39,7 @@ class Authorization extends React.Component<IProps, IState> {
     return(
       <div className={classes.items_container}>
         <TextField
-          error={loginValue.length === 0 ? true : false}
+          error={errorLogin ? true : false}
           className={classes.item_textField}
           type="text"
           value={loginValue}
@@ -48,7 +48,7 @@ class Authorization extends React.Component<IProps, IState> {
           onChange={this.handler("loginValue")}
         />
         <TextField
-          error={passwordValue.length === 0 ? true : false}
+          error={errorPassword ? true : false}
           className={classes.item_textField}
           type="password"
           value={passwordValue}
