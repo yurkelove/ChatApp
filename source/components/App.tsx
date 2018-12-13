@@ -13,8 +13,8 @@ class App extends React.Component{
       <BrowserRouter>
         <div>
           <Route path="/registration" component={AuthPage} />
-          <PrivateRoute exact path="/dialogs/:id" component={ChatSingle}/>
           <PrivateRoute exact path="/dialogs" component={ChatsList}/>
+          <PrivateRoute exact path="/dialogs/:id" component={ChatSingle}/>
           <Route exact path="/" render={() => (<Redirect to="/registration" />)} />
         </div>
       </BrowserRouter>

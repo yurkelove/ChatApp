@@ -3,24 +3,14 @@ import {connect } from 'react-redux';
 import { Route, Redirect} from 'react-router-dom';
 
 
-function PrivateRoute({ component: Component, ...rest }:any) {
-  const {is_authorized} = rest;
+function PrivateRoute({ component: Component,is_authorized, ...rest }:any) {
   return (
     <Route
         {...rest}
-        render={props => {
-          console.log(is_authorized);
-          return is_authorized ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/registration"
-            }}
-          />
-        )
-      }
-    }
+        render={ props => { 
+          return is_authorized ? (<Component {...props} />) 
+          : ( <Redirect to={{pathname: "/registration"}}/>)
+        }}
     />
   );
 }
