@@ -5,10 +5,12 @@ class ChatsList extends React.Component{
     return(
       <div>
         <h1>Chats List Page</h1>
+        <h1>Chats List Page</h1>
+        <h1>Chats List Page</h1>
       </div>
     );
   }
 }
 
 
-export default ChatsList
+export default ChatsList;

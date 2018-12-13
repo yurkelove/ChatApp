@@ -20,6 +20,3 @@ export const authorization = (login:string,password:string) => (dispatch:any) =>
 			}
 			);
 };
-
-
-

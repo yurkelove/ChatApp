@@ -6,8 +6,11 @@ import { Route, Redirect} from 'react-router-dom';
 function PrivateRoute({ component: Component, ...rest }:any) {
   const {is_authorized} = rest;
   return (
-    <Route {...rest} render={props =>
-          is_authorized ? (
+    <Route
+        {...rest}
+        render={props => {
+          console.log(is_authorized);
+          return is_authorized ? (
           <Component {...props} />
         ) : (
           <Redirect
@@ -17,6 +20,7 @@ function PrivateRoute({ component: Component, ...rest }:any) {
           />
         )
       }
+    }
     />
   );
 }

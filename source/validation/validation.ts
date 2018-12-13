@@ -5,8 +5,3 @@ export function minSymbol(value:string) {
 export function isNotEmpty(value:string) {
     return value.length > 0;
 }
-
-  
-  
-
-

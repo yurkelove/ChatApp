@@ -1,5 +1,6 @@
 export interface IClasses {
     classes: any;
+    is_authorized: any;
 };
 
 export const styles ={
@@ -19,5 +20,3 @@ export const styles ={
       marginTop: '10px'
     },
   };
-
-

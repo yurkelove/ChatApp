@@ -10,7 +10,6 @@ import {minSymbol, isNotEmpty } from '../../validation/validation';
 import {IClasses, styles} from './styles';
 
 
-
 interface IProps extends IClasses{
   registration : (login:string,password:string,confirmPassword:string) => void;
   login:string;
