@@ -11,9 +11,12 @@ import Authorization from './Authorization';
 import {IClasses} from './styles';
 
 
-interface IAuthorized extends IClasses{
+interface IAuthPagemapStateToProps {
   is_authorized?: boolean
 }
+
+type IAuthPageProps = IAuthPagemapStateToProps &  Partial<IClasses>;
+
 
 const styles ={
   page_container: {
@@ -44,7 +47,7 @@ function TabContainer(props : any) {
 }
 
 @(withStyles as any)(styles)
-class AuthPage extends React.Component<IAuthorized>{
+class AuthPage extends React.Component<IAuthPageProps>{
   public state = {
     currentTab: Setting.Auth
   };
@@ -89,7 +92,7 @@ class AuthPage extends React.Component<IAuthorized>{
 
 }
 
-function mapStateToProps(state:any) {
+function mapStateToProps(state:any):IAuthPagemapStateToProps {
   return {
     is_authorized: state.authorization.success
   }
