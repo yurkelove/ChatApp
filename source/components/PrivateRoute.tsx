@@ -9,7 +9,11 @@ function PrivateRoute({ component: Component,is_authorized, ...rest }:any) {
         {...rest}
         render={ props => {
           return is_authorized ? (<Component {...props} />)
+<<<<<<< HEAD
           : ( <Redirect to={{pathname: "/registration"}}/>)
+=======
+          : ( <Redirect to="/registration"/>)
+>>>>>>> 2449-auth_success
         }}
     />
   );

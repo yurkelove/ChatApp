@@ -76,6 +76,8 @@
       ],
       "linebreak-style": false,
       "object-literal-sort-keys": false,
-      "jsx-boolean-value": false
+      "jsx-boolean-value": false,
+      "jsx-no-lambda": false,
+      "no-consecutive-blank-lines": [true, 2]
     }
   }

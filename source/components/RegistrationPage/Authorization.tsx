@@ -1,20 +1,16 @@
 import * as React from 'react';
-import {bindActionCreators } from 'redux';
-import {connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import {withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import  * as authorization from '../../store/actions/authorization';
 import {IAuthorizationState} from '../../store/reducers/authorization';
-import {minSymbol, isNotEmpty } from '../../validation/validation';
+import {minSymbol, isNotEmpty} from '../../validation/validation';
 import {IClasses, styles} from './styles';
 
-
-interface IProps extends IClasses {
-  authorization: (login:string,password:string) => void;
-  login: string;
-  password:string;
-}
+// обьеденили интерфейсы , все должно приходить из коннекта
+type IAuthrizationProps = IAuthorizationDispatchToProps & IAuthorizationState & Partial<IClasses>;
 
 type IState = Readonly < {
   loginValue : string;
@@ -24,7 +20,7 @@ type IState = Readonly < {
 }>;
 
 @(withStyles as any)(styles)
-class Authorization extends React.Component<IProps, IState> {
+class Authorization extends React.Component<IAuthrizationProps, IState> {
   public state:IState = {
     loginValue: '',
     passwordValue: '',
@@ -94,13 +90,17 @@ class Authorization extends React.Component<IProps, IState> {
 
 function mapStateToProps(state:any):IAuthorizationState {
   return {
-    loading: state.registration.loading,
-    success: state.registration.success,
-    error: state.registration.error
+    loading: state.authorization.loading,
+    success: state.authorization.success,
+    error: state.authorization.error
   }
 }
 
-function mapDispatchToProps(dispatch:any) {
+interface IAuthorizationDispatchToProps {
+  authorization: (login:string,password:string) => void;
+}
+
+function mapDispatchToProps(dispatch:any):IAuthorizationDispatchToProps {
   return bindActionCreators({
     ...authorization,
   }, dispatch);

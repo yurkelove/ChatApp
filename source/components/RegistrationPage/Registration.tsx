@@ -1,22 +1,17 @@
 import * as React from 'react';
-import {bindActionCreators } from 'redux';
-import {connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import {withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import * as registration from '../../store/actions/registration';
-import {IRegistrationState } from '../../store/reducers/registration';
-import {minSymbol, isNotEmpty } from '../../validation/validation';
+import {IRegistrationState} from '../../store/reducers/registration';
+import {minSymbol, isNotEmpty} from '../../validation/validation';
 import {IClasses, styles} from './styles';
 
 
+type IRegistrationProps = IRegistrationDispatchToProps & IRegistrationState & Partial<IClasses>;
 
-interface IProps extends IClasses{
-  registration : (login:string,password:string,confirmPassword:string) => void;
-  login:string;
-  password:string;
-  confirmPassword: string;
-}
 
 type IState = Readonly < {
   loginValue : string;
@@ -28,7 +23,7 @@ type IState = Readonly < {
 }>;
 
 @(withStyles as any)(styles)
-class Registration extends React.Component<IProps,IState> {
+class Registration extends React.Component<IRegistrationProps,IState> {
   public state:IState = {
     loginValue: '',
     passwordValue: '',
@@ -111,6 +106,10 @@ class Registration extends React.Component<IProps,IState> {
 }
 
 
+interface IRegistrationDispatchToProps {
+  registration: (login:string,password:string,confirmPassword:string) => void;
+}
+
 function mapStateToProps(state:any):IRegistrationState {
   return {
     loading: state.registration.loading,
@@ -119,7 +118,7 @@ function mapStateToProps(state:any):IRegistrationState {
   };
 }
 
-function mapDispatchToProps(dispatch:any) {
+function mapDispatchToProps(dispatch:any):IRegistrationDispatchToProps {
   return bindActionCreators({
     ...registration,
   }, dispatch);

@@ -1,13 +1,19 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import {withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Registration from './Registration';
 import Authorization from './Authorization';
 import {IClasses} from './styles';
 
+
+interface IAuthorized extends IClasses{
+  is_authorized?: boolean
+}
 
 const styles ={
   page_container: {
@@ -38,13 +44,16 @@ function TabContainer(props : any) {
 }
 
 @(withStyles as any)(styles)
-class AuthPage extends React.Component<IClasses>{
+class AuthPage extends React.Component<IAuthorized>{
   public state = {
     currentTab: Setting.Auth
   };
   public render (){
-    const classes = this.props.classes;
+    const {is_authorized, classes} = this.props;
     const { currentTab } = this.state;
+    if(is_authorized){
+      return <Redirect to={"/dialogs"} />
+    }
     return(
       <div className={classes.page_container}>
         <div className={classes.items_container}>
@@ -67,29 +76,23 @@ class AuthPage extends React.Component<IClasses>{
   };
 
   private renderCurrentTab = (currentTab:Setting) => {
-    const classes = this.props.classes;
     if(currentTab === Setting.Auth){
       return(
-        <Authorization
-          password="password"
-          login="string"
-          classes={classes}
-        />
+        <Authorization/>
       )
     }else if(currentTab === Setting.Registration){
       return (
-        <Registration
-          password="password"
-          login={"string"}
-          confirmPassword="confirmPassword"
-          classes={classes}
-        />
+        <Registration/>
       )
     }
   }
 
 }
 
-export default AuthPage;
+function mapStateToProps(state:any) {
+  return {
+    is_authorized: state.authorization.success
+  }
+}
 
-
+export default connect(mapStateToProps)(AuthPage);

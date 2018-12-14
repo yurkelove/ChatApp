@@ -19,5 +19,3 @@ export const styles ={
       marginTop: '10px'
     },
   };
-
-
