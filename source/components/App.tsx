@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route, Redirect, BrowserRouter } from 'react-router-dom';
+import {Route, Redirect, BrowserRouter} from 'react-router-dom';
 import ChatList from './ChatsList';
 import ChatSingle from './ChatSingle';
 import AuthPage from './RegistrationPage/AuthPage';
