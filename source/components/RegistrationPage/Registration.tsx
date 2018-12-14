@@ -39,6 +39,7 @@ class Registration extends React.Component<IRegistrationProps,IState> {
     return(
       <div className={classes.items_container}>
         <TextField
+          error={errorLogin !== null ? true : false}
           className={classes.item_textField}
           type="text"
           value={loginValue}
@@ -48,6 +49,7 @@ class Registration extends React.Component<IRegistrationProps,IState> {
           onChange={this.handler("loginValue")}
         />
         <TextField
+          error={errorPassword !== null ? true : false}
           className={classes.item_textField}
           type="password"
           value={passwordValue}
@@ -57,6 +59,7 @@ class Registration extends React.Component<IRegistrationProps,IState> {
           onChange={this.handler("passwordValue")}
         />
         <TextField
+          error={errorConfirmPassword !== null ? true : false}
           className={classes.item_textField}
           type="password"
           value={confirmPassword}
