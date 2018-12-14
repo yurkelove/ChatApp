@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import {withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Registration from './Registration';
 import Authorization from './Authorization';
@@ -45,12 +45,11 @@ class AuthPage extends React.Component<IClasses>{
     currentTab: Setting.Auth
   };
   public render (){
-    const is_authorized = this.props.is_authorized;
-    const classes = this.props.classes;
+    const {is_authorized, classes} = this.props;
     const { currentTab } = this.state;
     if(is_authorized){
       return <Redirect to={"/dialogs"} />
-    } 
+    }
     return(
       <div className={classes.page_container}>
         <div className={classes.items_container}>
@@ -74,14 +73,12 @@ class AuthPage extends React.Component<IClasses>{
 
   private renderCurrentTab = (currentTab:Setting) => {
     const classes = this.props.classes;
-    const is_authorized = this.props.is_authorized;
     if(currentTab === Setting.Auth){
       return(
         <Authorization
           password="password"
           login="string"
           classes={classes}
-          is_authorized={is_authorized}
         />
       )
     }else if(currentTab === Setting.Registration){
@@ -91,7 +88,6 @@ class AuthPage extends React.Component<IClasses>{
           login={"string"}
           confirmPassword="confirmPassword"
           classes={classes}
-          is_authorized={is_authorized}
         />
       )
     }

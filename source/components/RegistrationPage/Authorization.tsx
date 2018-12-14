@@ -1,17 +1,17 @@
 import * as React from 'react';
-import {bindActionCreators } from 'redux';
-import {connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import {withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import  * as authorization from '../../store/actions/authorization';
 import {IAuthorizationState} from '../../store/reducers/authorization';
-import {minSymbol, isNotEmpty } from '../../validation/validation';
+import {minSymbol, isNotEmpty} from '../../validation/validation';
 import {IClasses, styles} from './styles';
 
 
 interface IProps extends IClasses {
-  authorization: (login:string,password:string) => void;
+  authorization?: (login:string,password:string) => void;
   login: string;
   password:string;
 }
