@@ -11,6 +11,10 @@ import Authorization from './Authorization';
 import {IClasses} from './styles';
 
 
+interface IAuthorized extends IClasses{
+  is_authorized?: boolean
+}
+
 const styles ={
   page_container: {
     display: 'flex',
@@ -40,7 +44,7 @@ function TabContainer(props : any) {
 }
 
 @(withStyles as any)(styles)
-class AuthPage extends React.Component<IClasses>{
+class AuthPage extends React.Component<IAuthorized>{
   public state = {
     currentTab: Setting.Auth
   };

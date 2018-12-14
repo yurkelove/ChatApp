@@ -1,6 +1,5 @@
 export interface IClasses {
     classes: any;
-    is_authorized? : boolean
 };
 
 export const styles ={

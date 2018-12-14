@@ -12,8 +12,8 @@ import {IClasses, styles} from './styles';
 
 interface IProps extends IClasses {
   authorization?: (login:string,password:string) => void;
-  login: string;
-  password:string;
+  login?: string;
+  password?:string;
 }
 
 type IState = Readonly < {
