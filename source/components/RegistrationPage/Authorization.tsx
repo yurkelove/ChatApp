@@ -9,12 +9,8 @@ import {IAuthorizationState} from '../../store/reducers/authorization';
 import {minSymbol, isNotEmpty} from '../../validation/validation';
 import {IClasses, styles} from './styles';
 
-
-interface IProps extends IClasses {
-  authorization?: (login:string,password:string) => void;
-  login?: string;
-  password?:string;
-}
+// обьеденили интерфейсы , все должно приходить из коннекта
+type IAuthrizationProps = IAuthorizationDispatchToProps & IAuthorizationState & Partial<IClasses>;
 
 type IState = Readonly < {
   loginValue : string;
@@ -24,7 +20,7 @@ type IState = Readonly < {
 }>;
 
 @(withStyles as any)(styles)
-class Authorization extends React.Component<IProps, IState> {
+class Authorization extends React.Component<IAuthrizationProps, IState> {
   public state:IState = {
     loginValue: '',
     passwordValue: '',
@@ -100,7 +96,11 @@ function mapStateToProps(state:any):IAuthorizationState {
   }
 }
 
-function mapDispatchToProps(dispatch:any) {
+interface IAuthorizationDispatchToProps {
+  authorization: (login:string,password:string) => void;
+}
+
+function mapDispatchToProps(dispatch:any):IAuthorizationDispatchToProps {
   return bindActionCreators({
     ...authorization,
   }, dispatch);

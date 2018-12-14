@@ -76,23 +76,13 @@ class AuthPage extends React.Component<IAuthorized>{
   };
 
   private renderCurrentTab = (currentTab:Setting) => {
-    const classes = this.props.classes;
     if(currentTab === Setting.Auth){
       return(
-        <Authorization
-          password="password"
-          login="string"
-          classes={classes}
-        />
+        <Authorization/>
       )
     }else if(currentTab === Setting.Registration){
       return (
-        <Registration
-          password="password"
-          login={"string"}
-          confirmPassword="confirmPassword"
-          classes={classes}
-        />
+        <Registration/>
       )
     }
   }

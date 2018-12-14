@@ -10,12 +10,8 @@ import {minSymbol, isNotEmpty} from '../../validation/validation';
 import {IClasses, styles} from './styles';
 
 
-interface IProps extends IClasses{
-  registration?: (login:string,password:string,confirmPassword:string) => void;
-  login?:string;
-  password?:string;
-  confirmPassword?: string;
-}
+type IRegistrationProps = IRegistrationDispatchToProps & IRegistrationState & Partial<IClasses>;
+
 
 type IState = Readonly < {
   loginValue : string;
@@ -27,7 +23,7 @@ type IState = Readonly < {
 }>;
 
 @(withStyles as any)(styles)
-class Registration extends React.Component<IProps,IState> {
+class Registration extends React.Component<IRegistrationProps,IState> {
   public state:IState = {
     loginValue: '',
     passwordValue: '',
@@ -110,6 +106,10 @@ class Registration extends React.Component<IProps,IState> {
 }
 
 
+interface IRegistrationDispatchToProps {
+  registration: (login:string,password:string,confirmPassword:string) => void;
+}
+
 function mapStateToProps(state:any):IRegistrationState {
   return {
     loading: state.registration.loading,
@@ -118,7 +118,7 @@ function mapStateToProps(state:any):IRegistrationState {
   };
 }
 
-function mapDispatchToProps(dispatch:any) {
+function mapDispatchToProps(dispatch:any):IRegistrationDispatchToProps {
   return bindActionCreators({
     ...registration,
   }, dispatch);
