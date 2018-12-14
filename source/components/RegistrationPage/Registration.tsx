@@ -44,7 +44,7 @@ class Registration extends React.Component<IProps,IState> {
     return(
       <div className={classes.items_container}>
         <TextField
-          error={errorLogin ? true : false}
+          error={errorLogin !== null ? true : false}
           className={classes.item_textField}
           type="text"
           value={loginValue}
@@ -54,7 +54,7 @@ class Registration extends React.Component<IProps,IState> {
           onChange={this.handler("loginValue")}
         />
         <TextField
-          error={errorPassword ? true : false}
+          error={errorPassword !== null ? true : false}
           className={classes.item_textField}
           type="password"
           value={passwordValue}
@@ -64,7 +64,7 @@ class Registration extends React.Component<IProps,IState> {
           onChange={this.handler("passwordValue")}
         />
         <TextField
-          error={errorConfirmPassword ? true : false}
+          error={errorConfirmPassword !== null ? true : false}
           className={classes.item_textField}
           type="password"
           value={confirmPassword}
