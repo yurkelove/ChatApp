@@ -12,4 +12,4 @@ class ChatSingle extends React.Component{
 }
 
 
-export default ChatSingle
+export default ChatSingle;
