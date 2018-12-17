@@ -1,8 +1,8 @@
 export interface IClasses {
-    classes: any;
+  classes: {[key:string]: string}
 };
 
-export const styles ={
+export const styles = {
     item_textField: {
       width:'100%',
       margin: '20px 0'
@@ -18,4 +18,4 @@ export const styles ={
       backgroundColor: '#1976d2',
       marginTop: '10px'
     },
-  };
+};
