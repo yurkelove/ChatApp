@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-class ChatsList extends React.Component{
+class Dialogs extends React.Component{
   public render (){
     return(
       <div>
@@ -13,4 +13,4 @@ class ChatsList extends React.Component{
 }
 
 
-export default ChatsList;
+export default Dialogs;

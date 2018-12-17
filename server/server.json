@@ -1,8 +1,15 @@
 {
-    "authorization": { 
-        "success" : true
+    "authorization": {
+      "success" : true
     },
     "registration": {
-        "success" : true
+      "success" : true
+    },
+    "dialogs" :{
+      "id" : 1,
+      "unreadCount" : "Количество не прочитаных сообщений",
+      "lastMessage" : "Последнее сообщение",
+      "dialogPic": "урл картинки для диалога"
     }
 }
+
