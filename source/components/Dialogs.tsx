@@ -6,10 +6,13 @@ import * as dialogs from '../store/actions/dialogs';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 import {IDialogsState} from '../store/reducers/dialogs'
-import IClasses from '../components/IClasses';
 
 
-type IDialogsProps = IDialogsDispatchToProps & IDialogsState & Partial<IClasses>;
+interface IDialogs {
+  dialogs: () => void
+}
+
+type IDialogsProps = IDialogs & IDialogsState;
 
 
 // @(withStyles as any)()
@@ -46,10 +49,6 @@ class Dialogs extends React.Component<IDialogsProps>{
 }
 
 
-interface IDialogsDispatchToProps {
-  dialogs: () => void;
-}
-
 function mapStateToProps(state:any) {
   return {
     loading: state.dialogs.loading,
@@ -58,7 +57,7 @@ function mapStateToProps(state:any) {
   };
 }
 
-function mapDispatchToProps(dispatch:any):IDialogsDispatchToProps {
+function mapDispatchToProps(dispatch:any) {
   return bindActionCreators({
     ...dialogs,
   }, dispatch);

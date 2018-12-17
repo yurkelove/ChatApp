@@ -11,11 +11,11 @@ import Authorization from './Authorization';
 import IClasses from '../IClasses';
 
 
-interface IAuthPagemapStateToProps {
+interface IAuthPageMapStateToProps {
   is_authorized?: boolean
 }
 
-type IAuthPageProps = IAuthPagemapStateToProps &  Partial<IClasses>;
+type IAuthPageProps = IAuthPageMapStateToProps &  Partial<IClasses>;
 
 
 const styles ={
@@ -92,7 +92,7 @@ class AuthPage extends React.Component<IAuthPageProps>{
 
 }
 
-function mapStateToProps(state:any):IAuthPagemapStateToProps {
+function mapStateToProps(state:any):IAuthPageMapStateToProps {
   return {
     is_authorized: state.authorization.success
   }

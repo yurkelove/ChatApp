@@ -8,7 +8,7 @@ import  * as authorization from '../../store/actions/authorization';
 import {IAuthorizationState} from '../../store/reducers/authorization';
 import {minSymbol, isNotEmpty} from '../../validation/validation';
 import {styles} from './styles';
-import IClasses from '../IClasses'
+import IClasses from '../IClasses';
 
 // обьеденили интерфейсы , все должно приходить из коннекта
 type IAuthrizationProps = IAuthorizationDispatchToProps & IAuthorizationState & Partial<IClasses>;
