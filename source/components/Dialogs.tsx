@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 import {IDialogsState} from '../store/reducers/dialogs'
 import IClasses from '../components/IClasses';
+import Loading from '../hoc/Loading';
 
 
 type IDialogsProps = IDialogsDispatchToProps & IDialogsState & Partial<IClasses>;
@@ -32,7 +33,7 @@ class Dialogs extends React.Component<IDialogsProps>{
                 <h1>Данные загрузились</h1>
             ) :
             <Fade
-              in={!loading}
+              in={loading === loading}
               style={{ transitionDelay: loading ? '800ms' : '0ms', }}
               unmountOnExit
             >
