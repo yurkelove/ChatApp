@@ -8,7 +8,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Registration from './Registration';
 import Authorization from './Authorization';
-import {IClasses} from './styles';
+import IClasses from '../IClasses';
 
 
 interface IAuthPagemapStateToProps {

@@ -1,7 +1,3 @@
-export interface IClasses {
-  classes: {[key:string]: string}
-};
-
 export const styles = {
     item_textField: {
       width:'100%',
