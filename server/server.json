@@ -10,19 +10,19 @@
       "id" : 1,
       "unreadCount" : "Количество не прочитаных сообщений",
       "lastMessage" : "Последнее сообщение",
-      "dialogPic": "url"
+      "dialogPic": "https://i.pinimg.com/736x/be/2d/30/be2d307e7f0004d3b014ee1120756a93--avatar-buttons.jpg"
       },
       {
         "id" : 2,
         "unreadCount" : "Количество не прочитаных сообщений",
         "lastMessage" : "Последнее сообщение",
-        "dialogPic": "url"
+        "dialogPic": "https://i.pinimg.com/736x/be/2d/30/be2d307e7f0004d3b014ee1120756a93--avatar-buttons.jpg"
       },
       {
         "id" : 3,
         "unreadCount" : "Количество не прочитаных сообщений",
         "lastMessage" : "Последнее сообщение",
-        "dialogPic": "url"
+        "dialogPic": "https://i.pinimg.com/736x/be/2d/30/be2d307e7f0004d3b014ee1120756a93--avatar-buttons.jpg"
       }
       ]
 }

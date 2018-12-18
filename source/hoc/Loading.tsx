@@ -1,8 +1,7 @@
-import React from 'React';
+import * as React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 function LoadingHoc(Component:any){
-  console.log(Component);
   return function ({ loading , ...props} :any) {
     if(loading){
       return <CircularProgress/>

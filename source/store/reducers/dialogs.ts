@@ -1,8 +1,8 @@
 export interface IDialogsState {
-  data: object[],
+  data: IItemDialogs[],
   loading: boolean,
   error: string,
-};
+}
 
 const initialState:IDialogsState = {
   data: [],
@@ -14,6 +14,14 @@ export const enum DIALOGS_ACTION_TYPE {
   LOADING = 'DIALOGS_LOADING',
   SUCCESS = 'DIALOGS_SUCESS',
   FAILURE = 'DIALOGS_FAILURE'
+}
+
+//interface для item-dialog , interface подставить в data-2 строка
+export interface IItemDialogs  {
+  id: string,
+  unreadCount : string,
+  lastMessage: string,
+  dialogPic: string
 }
 
 
