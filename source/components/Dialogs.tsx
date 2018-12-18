@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {compose} from "redux";
 import { bindActionCreators } from 'redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import * as dialogs from '../store/actions/dialogs';
@@ -6,7 +7,8 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 import {IDialogsState} from '../store/reducers/dialogs';
 import IClasses from '../components/IClasses';
-import Loading from '../hoc/Loading';
+import LoadingHoc from '../hoc/Loading';
+
 
 
 
@@ -26,7 +28,7 @@ class Dialogs extends React.Component<IDialogsProps>{
   public render (){
     const {loading} = this.props;
     return (
-      <h1>Тут подключение</h1>
+      <DialogsWithLoader loading={loading}/>
     )
   };
 }
@@ -52,11 +54,22 @@ function mapDispatchToProps(dispatch:any):IDialogsDispatchToProps {
 
 }
 
-const DialogsConnected = connect(mapStateToProps,mapDispatchToProps)(Dialogs);
-
-export default LoadingWithSpinner(DialogsConnected);
-
 // Обернуть LoadingWithSpinner,сделать правильный коннект
+// const connect =  connect(mapStateToProps,mapDispatchToProps)(Dialogs);
+
+// const LoadingWithSpinner = LoadingHoc(Dialogs);
+// const composeHoc = compose(
+//   connect(mapStateToProps,mapDispatchToProps)
+// )(LoadingWithSpinner);
+//
+// export default composeHoc;
+
+const DialogsWithLoader = LoadingHoc(Dialogs);
+
+export default connect(mapStateToProps,mapDispatchToProps)(DialogsWithLoader);
+
+
+
 
 
 
