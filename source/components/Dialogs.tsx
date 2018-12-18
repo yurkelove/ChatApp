@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { bindActionCreators } from 'redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Fade from '@material-ui/core/Fade';
 import * as dialogs from '../store/actions/dialogs';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
-import {IDialogsState} from '../store/reducers/dialogs'
+import {IDialogsState} from '../store/reducers/dialogs';
 import IClasses from '../components/IClasses';
 import Loading from '../hoc/Loading';
+
 
 
 type IDialogsProps = IDialogsDispatchToProps & IDialogsState & Partial<IClasses>;
@@ -15,6 +15,7 @@ type IDialogsProps = IDialogsDispatchToProps & IDialogsState & Partial<IClasses>
 
 // @(withStyles as any)()
 class Dialogs extends React.Component<IDialogsProps>{
+
   componentDidMount(){
     setTimeout(()=> {
       this.props.dialogs();
@@ -24,27 +25,12 @@ class Dialogs extends React.Component<IDialogsProps>{
 
   public render (){
     const {loading} = this.props;
-    console.log(loading);
-    return(
-      <div>
-        <h1>Dialogs Page</h1>
-        <div>
-          {loading ?  (
-                <h1>Данные загрузились</h1>
-            ) :
-            <Fade
-              in={loading === loading}
-              style={{ transitionDelay: loading ? '800ms' : '0ms', }}
-              unmountOnExit
-            >
-              <CircularProgress/>
-            </Fade>
-          }
-        </div>
-      </div>
-    );
-  }
+    return (
+      <h1>Тут подключение</h1>
+    )
+  };
 }
+
 
 
 interface IDialogsDispatchToProps {
@@ -66,6 +52,12 @@ function mapDispatchToProps(dispatch:any):IDialogsDispatchToProps {
 
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Dialogs);
+const DialogsConnected = connect(mapStateToProps,mapDispatchToProps)(Dialogs);
+
+export default LoadingWithSpinner(DialogsConnected);
+
+// Обернуть LoadingWithSpinner,сделать правильный коннект
+
+
 
 
