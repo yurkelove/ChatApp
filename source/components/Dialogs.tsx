@@ -9,7 +9,7 @@ import {IDialogsState} from '../store/reducers/dialogs'
 
 
 interface IDialogs {
-  dialogs: () => void
+  dialogs: any
 }
 
 type IDialogsProps = IDialogs & IDialogsState;
@@ -26,7 +26,6 @@ class Dialogs extends React.Component<IDialogsProps>{
 
   public render (){
     const {loading} = this.props;
-    console.log(loading);
     return(
       <div>
         <h1>Dialogs Page</h1>
