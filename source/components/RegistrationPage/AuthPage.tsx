@@ -8,12 +8,15 @@ import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Registration from './Registration';
 import Authorization from './Authorization';
-import {IClasses} from './styles';
+import IClasses from '../IClasses';
 
 
-interface IAuthorized extends IClasses{
+interface IAuthPageMapStateToProps {
   is_authorized?: boolean
 }
+
+type IAuthPageProps = IAuthPageMapStateToProps &  Partial<IClasses>;
+
 
 const styles ={
   page_container: {
@@ -44,7 +47,7 @@ function TabContainer(props : any) {
 }
 
 @(withStyles as any)(styles)
-class AuthPage extends React.Component<IAuthorized>{
+class AuthPage extends React.Component<IAuthPageProps>{
   public state = {
     currentTab: Setting.Auth
   };
@@ -89,7 +92,7 @@ class AuthPage extends React.Component<IAuthorized>{
 
 }
 
-function mapStateToProps(state:any) {
+function mapStateToProps(state:any):IAuthPageMapStateToProps {
   return {
     is_authorized: state.authorization.success
   }

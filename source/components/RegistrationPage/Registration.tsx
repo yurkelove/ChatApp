@@ -7,7 +7,8 @@ import {withStyles} from '@material-ui/core/styles';
 import * as registration from '../../store/actions/registration';
 import {IRegistrationState} from '../../store/reducers/registration';
 import {minSymbol, isNotEmpty} from '../../validation/validation';
-import {IClasses, styles} from './styles';
+import {styles} from './styles';
+import IClasses from '../IClasses';
 
 
 type IRegistrationProps = IRegistrationDispatchToProps & IRegistrationState & Partial<IClasses>;
