@@ -6,67 +6,54 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import * as dialogs from '../store/actions/dialogs';
+import {dialogs} from '../store/actions/dialogs';
 import {connect} from 'react-redux';
-import {withStyles} from '@material-ui/core';
 import {IDialogsState} from '../store/reducers/dialogs';
 import IClasses from '../components/IClasses';
 import LoadingHoc from '../hoc/Loading';
-import {dialog_styles} from '../hoc/dialog_styles';
 import {IItemDialogs} from '../store/reducers/dialogs';
+import {withRouter} from "react-router-dom";
 
 
 type IDialogsProps = IDialogsDispatchToProps & IDialogsState & Partial<IClasses>;
 
 
-@(withStyles as any)(dialog_styles)
-class Dialogs extends React.Component<IDialogsProps>{
-  // public static defaultProps: {
-  //   data: []
-  // };
+const Dialogs = (props:any):IDialogsProps => {
 
-  componentDidMount(){
-      this.props.dialogs();
-  }
-
-//Default Props - который будет устанавливать data - []
-  //item : any - изменить на созданный интерфейс
-
-  public render (){
-    const {data} = this.props;
-    console.log(data);
-    const ListElements = (data || []).map((item :IItemDialogs) => <ListItem>
-				<ListItemAvatar>
-				  <Avatar src={item.dialogPic} />
-				</ListItemAvatar>
-        <ListItemText
-          primary="Brunch this weekend?"
-          secondary={
-          <React.Fragment>
-          <Typography component="span"  color="textPrimary">
-           Ali Connors
-          </Typography>
-          {" — I'll be in your neighborhood doing errands this…"}
-          </React.Fragment>
-         }/>
-    </ListItem>);
-      return (
-      <List>
-        {ListElements}
-      </List>
-    )
+  const handlerSingle = (id:any) => {
+    return () => {
+      props.history.push(`/dialogs/${id}`);
+    }
   };
 
-}
+  const ListElements = (props.data || []).map((item :IItemDialogs) =>
+    <ListItem key={item.id} onClick={handlerSingle(item.id)}>
+    <ListItemAvatar>
+      <Avatar src={item.dialogPic} />
+    </ListItemAvatar>
+    <ListItemText
+      primary="Brunch this weekend?"
+      secondary={
+        <React.Fragment>
+          <Typography component="span"  color="textPrimary">
+            Ali Connors
+          </Typography>
+          {item.lastMessage}
+        </React.Fragment>
+      }/>
+  </ListItem>);
+  // @ts-ignore
+  return (
+    <List >
+      {ListElements}
+    </List >
+  )
 
 
-
-
-
-
+};
 
 interface IDialogsDispatchToProps {
-  dialogs: () => void;
+  onMount: () => void;
 }
 
 function mapStateToProps(state:any) {
@@ -79,24 +66,16 @@ function mapStateToProps(state:any) {
 
 function mapDispatchToProps(dispatch:any):IDialogsDispatchToProps {
   return bindActionCreators({
-    ...dialogs,
+    onMount: dialogs
   }, dispatch);
-
 }
 
-// Обернуть LoadingWithSpinner,сделать правильный коннект
-// const connect =  connect(mapStateToProps,mapDispatchToProps)(Dialogs);
-
-// const LoadingWithSpinner = LoadingHoc(Dialogs);
-// const composeHoc = compose(
-//   connect(mapStateToProps,mapDispatchToProps)
-// )(LoadingWithSpinner);
-//
-// export default composeHoc;
 
 const DialogsWithLoader = LoadingHoc(Dialogs);
 
-export default connect(mapStateToProps,mapDispatchToProps)(DialogsWithLoader);
+
+// @ts-ignore
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(DialogsWithLoader));
 
 
 

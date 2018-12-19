@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 
-class ChatSingle extends React.Component{
+export class ChatSingle extends React.Component{
   public render (){
     return(
       <div>

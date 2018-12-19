@@ -8,10 +8,10 @@ export const dialogs = () => (dispatch:any) => {
     type: DIALOGS_ACTION_TYPE.LOADING,
   });
   axios.get(dialogs_url)
-    .then((data) => {
+    .then((data:any) => {
         dispatch({
           type: DIALOGS_ACTION_TYPE.SUCCESS,
-          payload: {dialogs: data}
+          payload: {dialogs: data.data}
         })
       }
     ).catch( () => {
