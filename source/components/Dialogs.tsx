@@ -1,5 +1,7 @@
 import * as React from 'react';
 import {bindActionCreators} from 'redux';
+import {withRouter} from "react-router-dom";
+import {connect} from 'react-redux';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -7,12 +9,9 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import {dialogs} from '../store/actions/dialogs';
-import {connect} from 'react-redux';
-import {IDialogsState} from '../store/reducers/dialogs';
+import {IDialogsState,IItemDialogs} from '../store/reducers/dialogs';
 import IClasses from '../components/IClasses';
 import LoadingHoc from '../hoc/Loading';
-import {IItemDialogs} from '../store/reducers/dialogs';
-import {withRouter} from "react-router-dom";
 
 
 type IDialogsProps = IDialogsDispatchToProps & IDialogsState & Partial<IClasses>;
@@ -20,7 +19,7 @@ type IDialogsProps = IDialogsDispatchToProps & IDialogsState & Partial<IClasses>
 
 const Dialogs = (props:any):IDialogsProps => {
 
-  const handlerSingle = (id:any) => {
+  const handlerSingle = (id:string) => {
     return () => {
       props.history.push(`/dialogs/${id}`);
     }
@@ -56,7 +55,7 @@ interface IDialogsDispatchToProps {
   onMount: () => void;
 }
 
-function mapStateToProps(state:any) {
+function mapStateToProps(state:any):IDialogsState {
   return {
     loading: state.dialogs.loading,
     data: state.dialogs.data,
