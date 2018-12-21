@@ -16,7 +16,6 @@ export const enum DIALOGS_ACTION_TYPE {
   FAILURE = 'DIALOGS_FAILURE'
 }
 
-//interface для item-dialog , interface подставить в data-2 строка
 export interface IItemDialogs  {
   id: string,
   userName: string,

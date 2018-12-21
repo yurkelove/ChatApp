@@ -11,7 +11,14 @@ export const styles ={
   },
   item_textField: {
     marginTop: '30px',
-    width: '100%'
+    width: '77%',
+    float: 'left'
+  },
+  sendMessage : {
+    marginTop: '34px',
+    float: 'right',
+    width: '20%',
+    padding: '15px'
   },
   leftUser: {
     textAlign: 'left',
