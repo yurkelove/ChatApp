@@ -34,7 +34,7 @@ export interface IMessagesState {
       case MESSAGES_ACTION_TYPE.SUCCESS:
         return {
           loading:false,
-          data: action.payload.message,
+          data: action.payload.messages,
           error: null as any
         };
       case MESSAGES_ACTION_TYPE.FAILURE:
@@ -44,7 +44,7 @@ export interface IMessagesState {
           error: action.error
         };
       default:
-        return state
+        return state;
     }
   }
 

@@ -1,18 +1,24 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
+import {bindActionCreators} from 'redux';
 import {withStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField/TextField';
+import Button from '@material-ui/core/Button/Button';
 import IClasses from './IClasses';
 import {styles} from './styles/chatSingle_styles';
-import {messages} from '../store/actions/messages';
 import LoadingHoc from '../hoc/Loading';
-import {IMessagesState,IItemMessages} from '../store/reducers/messages';
-import Button from '@material-ui/core/Button/Button';
+import {messages} from '../store/actions/messages';
+import {IMessagesState,IItemMessages} from '../store/reducers/messages'
+import * as moment from "moment";
 
 
-type IMessagesProps = IMessagesDispatchToProps & IMessagesState & Partial<IClasses>;
+
+const userId = 1;
+
+
+  type IMessagesProps = IMessagesDispatchToProps & IMessagesState & Partial<IClasses>;
+
 
 @(withStyles as any)(styles)
 export class ChatSingle extends React.Component<IMessagesProps>{
@@ -22,21 +28,15 @@ export class ChatSingle extends React.Component<IMessagesProps>{
   };
 
   public render (){
-    const {classes} = this.props;
-    const {data} = this.props;
-    const userId = 1;
-    const infoMap = data.map((item:any) =>
+    const {classes,data} = this.props;
+    const infoMap = data.map((item:IItemMessages) =>
       <div>
         {item.userId === userId ?
-          <div  className={classes.rightUser}>
-            <div className={classes.userName}>{item.userName}</div>
-            <div className={classes.message}>{item.message}</div>
-            <div className={classes.sms_time}>{item.time}</div>
+          <div className={classes.rightUser}>
+            {this.renderMessage(item)}
           </div>
           : <div className={classes.leftUser}>
-              <div className={classes.userName}>{item.userName}</div>
-              <div className={classes.message}>{item.message}</div>
-              <div className={classes.sms_time}>{item.time}</div>
+            {this.renderMessage(item)}
           </div>
         }
       </div>);
@@ -45,7 +45,6 @@ export class ChatSingle extends React.Component<IMessagesProps>{
       <div className={classes.page_container}>
           <div className={classes.items_container}>
             {infoMap}
-
             <TextField
               className={classes.item_textField}
               type="text"
@@ -65,9 +64,29 @@ export class ChatSingle extends React.Component<IMessagesProps>{
     )
   }
 
-  private sendMessage = () => {
-      console.log('OnClick');
+  private renderMessage = (item:any) => {
+    // const timestump = new Date(item.time).toLocaleString();
+    const time = this.dateRender(item.time);
+    console.log(time);
+    const {classes} = this.props;
+    return (
+      <div>
+        <div className={classes.userName}>{item.userName}</div>
+        <div className={classes.message}>{item.message}</div>
+        <div className={classes.sms_time}>{time}</div>
+      </div>
+    )
   };
+
+  dateRender = (item:any) => {
+   return  moment(item).format('LL');
+  };
+
+  private sendMessage = () => {
+    this.state.inpValue = "";
+  };
+
+
 
   private onChangeHandle = (e:any) => {
     this.setState({
@@ -78,7 +97,7 @@ export class ChatSingle extends React.Component<IMessagesProps>{
   private handleInput = (e:any) => {
     const inputValue = this.state.inpValue;
     if (e.keyCode === 13 && inputValue !== '') {
-      console.log('Work');
+      this.sendMessage();
     }
   };
 }

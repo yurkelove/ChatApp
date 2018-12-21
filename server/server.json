@@ -28,18 +28,18 @@
         "dialogPic": "https://i.pinimg.com/736x/be/2d/30/be2d307e7f0004d3b014ee1120756a93--avatar-buttons.jpg"
       }
     ],
-    "message" : [
+    "messages" : [
       {
         "userId" : 1,
         "userName" : "Yura Kuzkin",
         "message" : "Привет меня зовут Юра,я пытаюсь сделать чат",
-        "time" : "14:40"
+        "time" : 1545402938000
       },
       {
         "userId" : 2,
         "userName" : "Alex Ivanov",
         "message" : "Привет, Я Саша",
-        "time" : "15:30"
+        "time" : 1545402938000
       }
     ]
 }
