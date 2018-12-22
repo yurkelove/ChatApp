@@ -17,7 +17,7 @@ export interface IMessagesState {
   }
 
   export interface IItemMessages  {
-    userId: string,
+    userId: number,
     userName: string,
     message : string,
     time: string

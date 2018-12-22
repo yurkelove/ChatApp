@@ -30,13 +30,13 @@ export class ChatSingle extends React.Component<IMessagesProps>{
   public render (){
     const {classes,data} = this.props;
     const infoMap = data.map((item:IItemMessages) =>
-      <div>
+      <div key={item.userId}>
         {item.userId === userId ?
           <div className={classes.rightUser}>
-            {this.renderMessage(item)}
+            {this.renderMessage(item,classes)}
           </div>
           : <div className={classes.leftUser}>
-            {this.renderMessage(item)}
+            {this.renderMessage(item,classes)}
           </div>
         }
       </div>);
@@ -64,22 +64,28 @@ export class ChatSingle extends React.Component<IMessagesProps>{
     )
   }
 
-  private renderMessage = (item:any) => {
-    // const timestump = new Date(item.time).toLocaleString();
-    const time = this.dateRender(item.time);
-    console.log(time);
-    const {classes} = this.props;
+  private renderMessage = (item:any,classes:any) => {
+    const timeStamp = this.formatDate(item.time);
     return (
       <div>
         <div className={classes.userName}>{item.userName}</div>
         <div className={classes.message}>{item.message}</div>
-        <div className={classes.sms_time}>{time}</div>
+        <div className={classes.sms_time}>{timeStamp}</div>
       </div>
     )
   };
 
-  dateRender = (item:any) => {
-   return  moment(item).format('LL');
+  formatDate = (date:number) => {
+    //isBefore,isAfter,isSame - до, после, или же они равны
+    const now = moment();
+    const msgTime = moment(date);
+    if(now.startOf('day').isSame(msgTime.startOf('day'))) {
+      return moment(date).format( 'LT' );
+    }else if(now.startOf('year').isSame(msgTime.startOf('year'))){
+      return moment(date).format('MMMM Do YYYY');
+    }else{
+      return moment(date).format('h:mm A')
+    }
   };
 
   private sendMessage = () => {
@@ -127,8 +133,5 @@ const MessageWithLoader = LoadingHoc(ChatSingle);
 
 // @ts-ignore
 export default connect(mapStateToProps,mapDispatchToProps)(withRouter(MessageWithLoader));
-
-
-
 
 

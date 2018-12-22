@@ -33,13 +33,13 @@
         "userId" : 1,
         "userName" : "Yura Kuzkin",
         "message" : "Привет меня зовут Юра,я пытаюсь сделать чат",
-        "time" : 1545402938000
+        "time" : 1545489366000
       },
       {
         "userId" : 2,
         "userName" : "Alex Ivanov",
         "message" : "Привет, Я Саша",
-        "time" : 1545402938000
+        "time" : 1419256603000
       }
     ]
 }
