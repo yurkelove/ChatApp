@@ -40,6 +40,12 @@
         "userName" : "Alex Ivanov",
         "message" : "Привет, Я Саша",
         "time" : 1419256603000
+      },
+      {
+        "userId" : 3,
+        "userName" : "Alex Ivanov",
+        "message" : "Привет, Я Саша",
+        "time" : 1545818386000
       }
     ]
 }
