@@ -10,7 +10,7 @@ import {styles} from './styles/chatSingle_styles';
 import LoadingHoc from '../hoc/Loading';
 import {messages} from '../store/actions/messages';
 import {IMessagesState,IItemMessages} from '../store/reducers/messages'
-import * as moment from "moment";
+import formatDate from '../helpers/formatDate';
 
 
 
@@ -64,8 +64,9 @@ export class ChatSingle extends React.Component<IMessagesProps>{
     )
   }
 
+
   private renderMessage = (item:any,classes:any) => {
-    const timeStamp = this.formatDate(item.time);
+    const timeStamp = formatDate(item.time);
     return (
       <div>
         <div className={classes.userName}>{item.userName}</div>
@@ -75,18 +76,6 @@ export class ChatSingle extends React.Component<IMessagesProps>{
     )
   };
 
-  formatDate = (date:number) => {
-    //isBefore,isAfter,isSame - до, после, или же они равны
-    const now = moment();
-    const msgTime = moment(date);
-    if(now.startOf('day').isSame(msgTime.startOf('day'))) {
-      return moment(date).format( 'LT' );
-    }else if(now.startOf('year').isSame(msgTime.startOf('year'))){
-      return moment(date).format('MMMM Do');
-    }else{
-      return moment(date).format('MMMM Do YYYY');
-    }
-  };
 
   private sendMessage = () => {
     this.state.inpValue = "";
