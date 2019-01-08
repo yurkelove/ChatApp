@@ -6,30 +6,17 @@ import ChatSingle from './ChatSingle';
 import AuthPage from './RegistrationPage/AuthPage';
 import {connect} from 'react-redux';
 import {IAuthorizationState} from '../store/reducers/authorization';
-import * as authorization from '../store/actions/authorization';
+import {authorization,authSuccess} from '../store/actions/authorization';
 import IClasses from '../components/IClasses';
 
 
-// обьеденили интерфейсы , все должно приходить из коннекта
 type IAuthrizationProps = IAuthorizationDispatchToProps & IAuthorizationState & Partial<IClasses>;
-
-// type IState = Readonly < {
-//   loginValue : string;
-//   passwordValue : string;
-// }>;
 
 class App extends React.Component<IAuthrizationProps>{
 
-  // public state:IState = {
-  //   loginValue: '',
-  //   passwordValue: '',
-  // };
-
   public componentDidMount(){
-    // const login = this.state.loginValue;
-    // const password = this.state.passwordValue;
     if(localStorage.getItem('token')){
-      this.props.authorization();
+      this.props.authSuccess();
     }
   }
 
@@ -58,11 +45,13 @@ function mapStateToProps(state:any):IAuthorizationState {
 
 interface IAuthorizationDispatchToProps {
   authorization: (login:string,password:string) => void;
+  authSuccess: () => void;
 }
 
 function mapDispatchToProps(dispatch:any):IAuthorizationDispatchToProps {
   return bindActionCreators({
-    ...authorization,
+    authorization,
+    authSuccess
   }, dispatch);
 }
 

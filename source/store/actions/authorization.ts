@@ -12,13 +12,18 @@ export const authorization = (login:string,password:string) => (dispatch:any) =>
 			localStorage.setItem('token',JSON.stringify(token.data.token))
         dispatch({
 					type: AUTHORIZATION_ACTION_TYPE.SUCCESS,
-				})
-			}
-		).catch( () => {
+				});
+			})
+		.catch( () => {
 		  dispatch({
         type: AUTHORIZATION_ACTION_TYPE.FAILURE,
-      })
-			}
-			);
+      });
+		});
 };
 
+
+export const authSuccess = () => (dispatch:any) => {
+	dispatch({
+		type: AUTHORIZATION_ACTION_TYPE.SUCCESS
+	});
+};
