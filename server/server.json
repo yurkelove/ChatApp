@@ -1,6 +1,7 @@
 {
     "authorization": {
-      "success" : true
+      "success" : true,
+      "token" : "adafaf"
     },
     "registration": {
       "success" : true

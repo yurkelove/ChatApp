@@ -8,9 +8,10 @@ export const authorization = (login:string,password:string) => (dispatch:any) =>
 			type: AUTHORIZATION_ACTION_TYPE.LOADING
 		});
 		axios.get(url)
-		.then(() => {
+		.then((token:any) => {
+			localStorage.setItem('token',JSON.stringify(token.data.token))
         dispatch({
-          type: AUTHORIZATION_ACTION_TYPE.SUCCESS
+					type: AUTHORIZATION_ACTION_TYPE.SUCCESS,
 				})
 			}
 		).catch( () => {
@@ -20,3 +21,4 @@ export const authorization = (login:string,password:string) => (dispatch:any) =>
 			}
 			);
 };
+

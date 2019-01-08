@@ -55,6 +55,7 @@ const Dialogs = (props:any):IDialogsProps => {
       }/>
   </ListItem>);
   // @ts-ignore
+
   return (
     <div className={props.classes.page_container}>
       <List className={props.classes.items_container}>
@@ -77,7 +78,6 @@ function mapStateToProps(state:any):IDialogsState {
     error: state.dialogs.error
   };
 }
-
 function mapDispatchToProps(dispatch:any):IDialogsDispatchToProps {
   return bindActionCreators({
     onMount: dialogs
