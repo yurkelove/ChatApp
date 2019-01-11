@@ -12,7 +12,21 @@ import {dialogs} from '../store/actions/dialogs';
 import {IDialogsState,IItemDialogs} from '../store/reducers/dialogs';
 import IClasses from '../components/IClasses';
 import LoadingHoc from '../hoc/Loading';
+import {withStyles} from '@material-ui/core/styles';
 
+
+const styles = {
+  page_container: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  items_container: {
+    width: '720px',
+    textAlign: 'center',
+    margin: '0 auto',
+  },
+};
 
 type IDialogsProps = IDialogsDispatchToProps & IDialogsState & Partial<IClasses>;
 
@@ -24,7 +38,6 @@ const Dialogs = (props:any):IDialogsProps => {
       props.history.push(`/dialogs/${id}`);
     }
   };
-
   const ListElements = (props.data || []).map((item :IItemDialogs) =>
     <ListItem key={item.id} onClick={handlerSingle(item.id)}>
     <ListItemAvatar>
@@ -35,17 +48,20 @@ const Dialogs = (props:any):IDialogsProps => {
       secondary={
         <React.Fragment>
           <Typography component="span"  color="textPrimary">
-            Ali Connors
+            {item.userName}
           </Typography>
           {item.lastMessage}
         </React.Fragment>
       }/>
   </ListItem>);
   // @ts-ignore
+
   return (
-    <List >
-      {ListElements}
-    </List >
+    <div className={props.classes.page_container}>
+      <List className={props.classes.items_container}>
+        {ListElements}
+      </List >
+    </div>
   )
 
 
@@ -62,7 +78,6 @@ function mapStateToProps(state:any):IDialogsState {
     error: state.dialogs.error
   };
 }
-
 function mapDispatchToProps(dispatch:any):IDialogsDispatchToProps {
   return bindActionCreators({
     onMount: dialogs
@@ -74,10 +89,7 @@ const DialogsWithLoader = LoadingHoc(Dialogs);
 
 
 // @ts-ignore
-export default connect(mapStateToProps,mapDispatchToProps)(withRouter(DialogsWithLoader));
-
-
-
+export default withStyles(styles)(connect(mapStateToProps,mapDispatchToProps)(withRouter(DialogsWithLoader)));
 
 
 

@@ -15,7 +15,8 @@ const initialState:IAuthorizationState = {
 export const enum AUTHORIZATION_ACTION_TYPE {
   LOADING = 'AUTHORIZATION_LOADING',
   SUCCESS = 'AUTHORIZATION_SUCCESS',
-  FAILURE = 'AUTHORIZATION_FAILURE'
+  FAILURE = 'AUTHORIZATION_FAILURE',
+  TOKEN = 'AUTHORIZATION_TOKEN'
 }
 
 
@@ -29,8 +30,9 @@ export default function authorization(state:IAuthorizationState = initialState,a
     case AUTHORIZATION_ACTION_TYPE.SUCCESS:
       return {
         loading:false,
+        // token: action.payload.token
         success: true,
-        error: null
+        error: null,
       };
     case AUTHORIZATION_ACTION_TYPE.FAILURE:
       return {
@@ -38,7 +40,6 @@ export default function authorization(state:IAuthorizationState = initialState,a
         success: false,
         error: action.error
       };
-      // Если нечего не изменилось вернем стейт
     default:
       return state
   }

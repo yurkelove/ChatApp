@@ -1,6 +1,7 @@
 {
     "authorization": {
-      "success" : true
+      "success" : true,
+      "token" : "adafaf"
     },
     "registration": {
       "success" : true
@@ -8,21 +9,44 @@
     "dialogs" : [
       {
       "id" : 1,
+      "userName": "Андрей" ,
       "unreadCount" : "Количество не прочитаных сообщений",
       "lastMessage" : "Последнее сообщение",
       "dialogPic": "https://i.pinimg.com/736x/be/2d/30/be2d307e7f0004d3b014ee1120756a93--avatar-buttons.jpg"
       },
       {
         "id" : 2,
+        "userName": "Коля" ,
         "unreadCount" : "Количество не прочитаных сообщений",
         "lastMessage" : "Последнее сообщение",
         "dialogPic": "https://i.pinimg.com/736x/be/2d/30/be2d307e7f0004d3b014ee1120756a93--avatar-buttons.jpg"
       },
       {
         "id" : 3,
+        "userName": "Иван" ,
         "unreadCount" : "Количество не прочитаных сообщений",
         "lastMessage" : "Последнее сообщение",
         "dialogPic": "https://i.pinimg.com/736x/be/2d/30/be2d307e7f0004d3b014ee1120756a93--avatar-buttons.jpg"
+      }
+    ],
+    "messages" : [
+      {
+        "userId" : 1,
+        "userName" : "Yura Kuzkin",
+        "message" : "Привет меня зовут Юра,я пытаюсь сделать чат",
+        "time" : 1545489366000
+      },
+      {
+        "userId" : 2,
+        "userName" : "Alex Ivanov",
+        "message" : "Привет, Я Саша",
+        "time" : 1419256603000
+      },
+      {
+        "userId" : 3,
+        "userName" : "Alex Ivanov",
+        "message" : "Привет, Я Саша",
+        "time" : 1545818386000
       }
     ]
 }

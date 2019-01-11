@@ -10,7 +10,7 @@ interface ILoadingHocInterface {
 
 function LoadingHoc(Component:any){
   return class HOC extends React.Component<ILoadingHocInterface> {
-    componentDidMount(){
+    public componentDidMount(){
       const onMount = this.props.onMount;
       if(onMount){
         onMount();
@@ -31,7 +31,4 @@ function LoadingHoc(Component:any){
 }
 
 
-
 export default LoadingHoc;
-
-
