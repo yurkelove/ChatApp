@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
+import {withRouter} from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import {withStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField/TextField';
@@ -11,7 +11,6 @@ import LoadingHoc from '../hoc/Loading';
 import {messages} from '../store/actions/messages';
 import {IMessagesState,IItemMessages} from '../store/reducers/messages'
 import formatDate from '../helpers/formatDate';
-
 
 
 const userId = 1;
@@ -53,11 +52,13 @@ export class ChatSingle extends React.Component<IMessagesProps>{
               onChange={this.onChangeHandle}
               onKeyUp={this.handleInput}
             />
-            <Button className={classes.sendMessage}
-                    variant="contained"
-                    color="primary"
-                    onClick={this.sendMessage}>
-                    Отправить
+            <Button 
+              className={classes.sendMessage}
+              variant="contained"
+              color="primary"
+              onClick={this.sendMessage}
+              >
+              Отправить
             </Button>
           </div>
       </div>
@@ -80,7 +81,6 @@ export class ChatSingle extends React.Component<IMessagesProps>{
   private sendMessage = () => {
     this.state.inpValue = "";
   };
-
 
 
   private onChangeHandle = (e:any) => {
